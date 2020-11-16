@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Fitnessclub_DAL.Models
 {
-    public class Werkgever
+    public class Werkgever:Persoon
     {
         public int WerkgeverID { get; set; }
         public bool IsAdmin { get; set; }
 
-        //navigatieproperties
-        public ICollection<Workout> Workouts { get; set; }
     }
 }
