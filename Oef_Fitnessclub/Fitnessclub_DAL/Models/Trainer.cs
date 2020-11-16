@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fitnessclub_DAL
+namespace Fitnessclub_DAL.Models
 {
-    public class Class1
+    class Trainer
     {
     }
 }
