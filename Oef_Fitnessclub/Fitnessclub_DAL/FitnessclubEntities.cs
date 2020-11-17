@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fitnessclub_DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,9 +10,15 @@ namespace Fitnessclub_DAL
 {
     class FitnessclubEntities: DbContext
     {
-        public FitnessclubEntities()
+        public FitnessclubEntities(): base("name=FitnessclubDBConnectionString")
         {
 
         }
+
+        public DbSet<Persoon> Personen { get; set; }
+        public DbSet<Log> Logs { get; set; }
+        public DbSet<Log_Oefening> Log_Workouts { get; set; }
+        public DbSet<Oefening> Oefeningen { get; set; }
+
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\bin\Debug\Fitnessclub_DAL.dll.config
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\bin\Debug\Fitnessclub_DAL.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\bin\Debug\Fitnessclub_DAL.pdb
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\bin\Debug\EntityFramework.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\bin\Debug\EntityFramework.xml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.Migrations.InitialCreate.resources
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.Migrations.updateTrainer.resources
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.csproj.GenerateResource.cache
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.csproj.CoreCompileInputs.cache
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.csproj.CopyComplete
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.pdb
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.csprojAssemblyReference.cache

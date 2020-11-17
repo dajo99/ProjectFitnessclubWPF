@@ -1,3 +1,9 @@
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\App.g.cs
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF_MarkupCompile.cache
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF_MarkupCompile.lref
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF.csprojAssemblyReference.cache
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Views\MainView.g.cs
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\Fitnessclub_WPF.exe.config
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\Fitnessclub_WPF.exe
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\Fitnessclub_WPF.pdb
@@ -5,6 +11,8 @@ C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\GalaSoft.MvvmLight.dll
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\GalaSoft.MvvmLight.Extras.dll
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\MaterialDesignColors.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\GalaSoft.MvvmLight.pdb
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\GalaSoft.MvvmLight.xml
@@ -12,14 +20,11 @@ C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\GalaSoft.MvvmLight.Extras.xml
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\GalaSoft.MvvmLight.Platform.xml
-C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF.csprojAssemblyReference.cache
-C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\MainWindow.g.cs
-C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\App.g.cs
-C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF_MarkupCompile.cache
-C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF_MarkupCompile.lref
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\MaterialDesignColors.pdb
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\App.baml
-C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\MainWindow.baml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Views\MainView.baml
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF.g.resources
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF.Properties.Resources.resources
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF.csproj.GenerateResource.cache

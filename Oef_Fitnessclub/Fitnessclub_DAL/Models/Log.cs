@@ -22,5 +22,6 @@ namespace Fitnessclub_DAL.Models
 
         //navigatieproperties
         public Klant Klant { get; set; }
+        public ICollection<Log_Oefening> Log_Oefeningen { get; set; }
     }
 }
