@@ -10,13 +10,12 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
+     Background= "Beige"
      FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Title="MainView" Height="600" Width="1080" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
     <Grid x:Name="GridMainWindow">
-        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1080"/>
         <Grid x:Name="GridNav" Height="60" VerticalAlignment="Top"  Background="#D8B86C">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="32*"/>
@@ -26,21 +25,41 @@
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
             <StackPanel x:Name="Accountpanel" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Grid.Column="0">
-                <materialDesign:Chip x:Name="Accountnaam" Background="White" >
-                    <materialDesign:Chip.Icon>
-                        <Image x:Name="ProfileImage" />
-                    </materialDesign:Chip.Icon>
-                </materialDesign:Chip>
-                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Margin="10">
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignLeftEdges" HorizontalAlignment="Left" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
                         <Button  Content="Account"/>
                         <Separator/>
                         <Button  Content="Logout"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
+                <materialDesign:Chip x:Name="Accountnaam" Background="#555555" HorizontalAlignment="Right" Margin="0,14" Width="96">
+                    <materialDesign:Chip.Icon>
+                        <Image x:Name="ProfileImage"/>
+                    </materialDesign:Chip.Icon>
+                </materialDesign:Chip>
             </StackPanel>
-            <Button Content="Afsluiten" Width="150" VerticalAlignment="Center" Background="#555555" BorderBrush="{x:Null}"  materialDesign:ButtonAssist.CornerRadius="5" Height="30" Grid.Column="1" Grid.ColumnSpan="2" />
+            <Label x:Name="lbWelkom" Content="Welkom" FontSize="30" FontWeight="Bold" Margin="30 10 0 0" Grid.Column="0" Visibility="Visible"/>
+            <Button Command="{Binding}" CommandParameter="Afsluiten" Content="Afsluiten" Width="150" VerticalAlignment="Center" Background="#555555" BorderBrush="{x:Null}"  materialDesign:ButtonAssist.CornerRadius="5" Height="30" Grid.Column="1" Grid.ColumnSpan="2" />
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" VerticalAlignment="Center" FontSize="22" Height="36" Grid.Column="0" Margin="463,15,160,9">Fitnessclub</Button>
+        </Grid>
+        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1080">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="GA VOOR GOUD" Grid.Row="0" Grid.ColumnSpan="2" Margin="20" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Image Source="{StaticResource Main}" Margin="0 10 0 0" Grid.Column="0" Grid.Row="1" Height="350"  Width="350">
+
+            </Image>
+            <Button Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0 60 0 0" Background="#555555" BorderBrush="{x:Null}" materialDesign:ButtonAssist.CornerRadius="5" Width="350" Height="60">Administrator</Button>
+            <Button Command="{Binding}" CommandParameter="LogInKlant" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="0 0 0 160" Background="#555555" BorderBrush="{x:Null}" materialDesign:ButtonAssist.CornerRadius="5" Width="350" Height="60">Klant</Button>
+
+
+
         </Grid>
     </Grid>
 </Window>

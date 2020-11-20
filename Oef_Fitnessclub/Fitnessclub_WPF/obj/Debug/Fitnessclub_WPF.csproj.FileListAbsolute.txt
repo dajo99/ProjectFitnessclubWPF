@@ -32,3 +32,14 @@ C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF.csproj.CopyComplete
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF.exe
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF.pdb
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Components\BindablePasswordBox.g.cs
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\LogInControl.g.cs
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Components\BindablePasswordBox.baml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\LogInControl.baml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\Fitnessclub_DAL.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\EntityFramework.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\Fitnessclub_DAL.pdb
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\Fitnessclub_DAL.dll.config
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\EntityFramework.xml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\FunctiesKlantControl.g.cs
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\RegisterControl.g.cs

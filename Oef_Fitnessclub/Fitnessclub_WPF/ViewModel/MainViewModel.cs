@@ -1,4 +1,7 @@
 using GalaSoft.MvvmLight;
+using System;
+using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace Fitnessclub_WPF.ViewModel
 {
@@ -14,19 +17,49 @@ namespace Fitnessclub_WPF.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : BasisViewModel
     {
         public MainViewModel()
         {
-            if (IsInDesignMode)
+           
+
+        }
+
+        
+        public override string this[string columnName] => throw new NotImplementedException();
+        public override bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public void Close()
+        {
+            MessageBoxResult Result = MessageBox.Show("Ben je zeker dat je wilt afsluiten?", "Afsluiten", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (Result == MessageBoxResult.Yes)
             {
-                Title = "Hello MVVM Light (Design Mode)";
+                App.Current.Shutdown();
             }
-            else
+
+        }
+        public void LogOut()
+        {
+            ///uitlog code
+        }
+        public override void Execute(object parameter)
+        {
+            switch (parameter.ToString())
             {
-                Title = "Hello MVVM Light";
+                case "Afsluiten":
+                    Close();
+                    break;
+                case "LogOut":
+                    LogOut();
+                    break;
+
             }
         }
+
 
         public string Title { get; set; }
     }
