@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class FunctiesKlantViewModel: BasisViewModel
+    public class FunctiesKlantViewModel
     {
     }
 }

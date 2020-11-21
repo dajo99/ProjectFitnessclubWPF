@@ -43,3 +43,9 @@ C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\EntityFramework.xml
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\FunctiesKlantControl.g.cs
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\RegisterControl.g.cs
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\WorkoutsKlantControl.g.cs
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\FunctiesKlantControl.baml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\RegisterControl.baml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\WorkoutsKlantControl.baml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\WelkomControl.g.cs
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\WelkomControl.baml

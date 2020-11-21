@@ -1,4 +1,6 @@
 ﻿using Fitnessclub_DAL.Models;
+using Fitnessclub_WPF.UserControls;
+using Fitnessclub_WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace Fitnessclub_WPF.ViewModel
 {
     public class LogInViewModel: BasisViewModel
     {
+        MainView main = (MainView)App.Current.MainWindow;
 
         private string _email;
         private string _wachtwoord;
@@ -44,7 +47,7 @@ namespace Fitnessclub_WPF.ViewModel
             }
         }
 
-        Persoon persoon;
+        
         public void Authenticeer()
         {
             /*gebruiker = DatabaseOperations.GetUserByEmail(Email);
@@ -76,10 +79,6 @@ namespace Fitnessclub_WPF.ViewModel
                 {
                     return "Vul een geldig emailadres in!";
                 }
-                else if (columnName == "Wachtwoord" && string.IsNullOrWhiteSpace(Email))
-                {
-                    return "Vul een wachtwoord in om aan te melden!";
-                }
 
                 return "";
             }
@@ -98,7 +97,17 @@ namespace Fitnessclub_WPF.ViewModel
             switch (parameter.ToString())
             {
                 case "Aanmelden": Authenticeer(); break;
+                case "GeenAccount": Registreren(); break;
+
             }
+        }
+
+        private void Registreren()
+        {
+            main.GridMain.Children.Clear();
+            RegisterControl usc = new RegisterControl();
+            usc.DataContext = new RegisterViewmodel();
+            main.GridMain.Children.Add(usc);
         }
     }
 }

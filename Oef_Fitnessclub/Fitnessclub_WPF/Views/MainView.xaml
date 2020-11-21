@@ -39,24 +39,11 @@
                 </materialDesign:Chip>
             </StackPanel>
             <Label x:Name="lbWelkom" Content="Welkom" FontSize="30" FontWeight="Bold" Margin="30 10 0 0" Grid.Column="0" Visibility="Visible"/>
-            <Button Command="{Binding}" CommandParameter="Afsluiten" Content="Afsluiten" Width="150" VerticalAlignment="Center" Background="#555555" BorderBrush="{x:Null}"  materialDesign:ButtonAssist.CornerRadius="5" Height="30" Grid.Column="1" Grid.ColumnSpan="2" />
+            <Button Command="{Binding}" CommandParameter="Afsluiten" Content="Afsluiten" Width="150" VerticalAlignment="Center" Style="{StaticResource MaterialDesignRaisedAccentButton}"  materialDesign:ButtonAssist.CornerRadius="5" Height="30" Grid.Column="1" Grid.ColumnSpan="2" />
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" VerticalAlignment="Center" FontSize="22" Height="36" Grid.Column="0" Margin="463,15,160,9">Fitnessclub</Button>
         </Grid>
         <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1080">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Content="GA VOOR GOUD" Grid.Row="0" Grid.ColumnSpan="2" Margin="20" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <Image Source="{StaticResource Main}" Margin="0 10 0 0" Grid.Column="0" Grid.Row="1" Height="350"  Width="350">
-
-            </Image>
-            <Button Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0 60 0 0" Background="#555555" BorderBrush="{x:Null}" materialDesign:ButtonAssist.CornerRadius="5" Width="350" Height="60">Administrator</Button>
-            <Button Command="{Binding}" CommandParameter="LogInKlant" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="0 0 0 160" Background="#555555" BorderBrush="{x:Null}" materialDesign:ButtonAssist.CornerRadius="5" Width="350" Height="60">Klant</Button>
+           
 
 
 

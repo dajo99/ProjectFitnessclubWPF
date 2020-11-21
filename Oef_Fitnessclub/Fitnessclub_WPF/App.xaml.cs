@@ -1,4 +1,5 @@
-﻿using Fitnessclub_WPF.ViewModel;
+﻿using Fitnessclub_WPF.UserControls;
+using Fitnessclub_WPF.ViewModel;
 using Fitnessclub_WPF.Views;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,11 @@ namespace Fitnessclub_WPF
     public partial class App : Application
     {
         private void Application_Startup(object sender, StartupEventArgs e)
-        {
-            MainViewModel viewmodel = new MainViewModel();
+        {  
             MainView mainView = new MainView();
-            mainView.DataContext = viewmodel;
+            WelkomControl usc = new WelkomControl();
+            usc.DataContext = new WelkomViewModel();
+            mainView.GridMain.Children.Add(usc);
             mainView.Show();
         }
     }

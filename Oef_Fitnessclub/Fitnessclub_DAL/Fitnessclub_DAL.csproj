@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasisModel\Basisklasse.cs" />
+    <Compile Include="DataManager.cs" />
+    <Compile Include="FileOperations.cs" />
     <Compile Include="FitnessclubEntities.cs" />
     <Compile Include="Migrations\202011162339056_InitialCreate.cs" />
     <Compile Include="Migrations\202011162339056_InitialCreate.designer.cs">

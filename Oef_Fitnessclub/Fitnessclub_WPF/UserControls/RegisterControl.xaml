@@ -118,8 +118,8 @@
             
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0 0 0 30">
-            <Button Command="{Binding}" CommandParameter="LogInKlant" HorizontalAlignment="Left" Margin="100 0 200 0"   materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="250" Height="50">Terug</Button>
-            <Button Command="{Binding}" CommandParameter="LogInKlant" HorizontalAlignment="Right" Margin="190 0 100 0"    materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="250" Height="50">Registreren</Button>
+            <Button Command="{Binding}" CommandParameter="LogInKlant" HorizontalAlignment="Left" Margin="100 0 200 0"   materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="200" Height="40">Terug</Button>
+            <Button Command="{Binding}" CommandParameter="LogInKlant" HorizontalAlignment="Right" Margin="280 0 0 0"    materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="200" Height="40">Registreren</Button>
         </StackPanel>
     </Grid>
 </UserControl>

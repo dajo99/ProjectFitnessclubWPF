@@ -92,11 +92,19 @@
     <Compile Include="UserControls\RegisterControl.xaml.cs">
       <DependentUpon>RegisterControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\WelkomControl.xaml.cs">
+      <DependentUpon>WelkomControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WorkoutsKlantControl.xaml.cs">
+      <DependentUpon>WorkoutsKlantControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BasisViewModel.cs" />
     <Compile Include="ViewModel\FunctiesKlantViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\RegisterViewmodel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\WelkomViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -117,6 +125,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\RegisterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\WelkomControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\WorkoutsKlantControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,6 +175,10 @@
     <ProjectReference Include="..\Fitnessclub_DAL\Fitnessclub_DAL.csproj">
       <Project>{EAA2930B-2923-477E-B22B-E507F294F1F6}</Project>
       <Name>Fitnessclub_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fitnessclub_Models\Fitnessclub_Models.csproj">
+      <Project>{2C53A5EC-D87B-478F-8953-9D4ECB43749F}</Project>
+      <Name>Fitnessclub_Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

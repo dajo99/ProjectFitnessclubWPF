@@ -1,3 +1,5 @@
+using Fitnessclub_WPF.UserControls;
+using Fitnessclub_WPF.Views;
 using GalaSoft.MvvmLight;
 using System;
 using System.Windows;
@@ -19,6 +21,7 @@ namespace Fitnessclub_WPF.ViewModel
     /// </summary>
     public class MainViewModel : BasisViewModel
     {
+        
         public MainViewModel()
         {
            
@@ -42,25 +45,16 @@ namespace Fitnessclub_WPF.ViewModel
             }
 
         }
-        public void LogOut()
-        {
-            ///uitlog code
-        }
+       
         public override void Execute(object parameter)
         {
             switch (parameter.ToString())
             {
                 case "Afsluiten":
                     Close();
-                    break;
-                case "LogOut":
-                    LogOut();
-                    break;
+                    break;  
 
             }
         }
-
-
-        public string Title { get; set; }
     }
 }
