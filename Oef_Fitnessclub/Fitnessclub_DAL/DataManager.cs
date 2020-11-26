@@ -25,6 +25,26 @@ namespace Fitnessclub_DAL
 
         }
 
+        public static Persoon OphalenKlantViaKlantMail(string email)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+                    return Entities.Personen
+                        .Where(x => x.Email == email)
+                        .SingleOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return null;
+            }
+          
+
+        }
+
         public static int ToevoegenKlant(Klant klant)
         {
             try

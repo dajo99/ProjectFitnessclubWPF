@@ -135,6 +135,7 @@ namespace Fitnessclub_WPF.ViewModel
             k.Gemeente = Gemeente;
             k.Postcode = Postcode;
             k.Land = Land;
+            k.Email = Email;
             
 
             if (Profielfoto != null)
@@ -151,8 +152,7 @@ namespace Fitnessclub_WPF.ViewModel
                 //wachtwoord encrypteren 
                 k.Wachtwoord = SecurePassword.EncryptString(k.Wachtwoord);
 
-                // Lijst maken met alle accounts maken   
-                //Nieuw account als paramater is nodig zodat ik geen 2de methode moet aanmaken om een lijst van accounts op te vullen (om account te wijzigen heb je een paramter nodig)
+                
                 List<Persoon> accounts = DataManager.OphalenKlantViaKlant(new Klant());
 
                 if (!accounts.Contains(k))//Kijken als er al een acocunt met deze mail in database zit
@@ -161,8 +161,7 @@ namespace Fitnessclub_WPF.ViewModel
                     if (ok > 0)
                     {
                         User.klant = k; //nodig om account van de klant te onthouden
-                        string volledigeNaam = k.Voornaam.Trim() + " " + k.Achternaam.Trim();
-                        main.Accountnaam.Content = volledigeNaam;//Menubalk naam veranderen
+                        main.Accountnaam.Content = k.Voornaam;
                         main.ProfileImage.Source = myImage;
                         main.Welkom.Visibility = Visibility.Hidden;
                         main.AccountPanel.Visibility = Visibility.Visible;
