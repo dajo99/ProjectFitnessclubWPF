@@ -49,3 +49,8 @@ C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\WorkoutsKlantControl.baml
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\WelkomControl.g.cs
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\WelkomControl.baml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\Fitnessclub_Models.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\Fitnessclub_Models.pdb
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\Fitnessclub_WPF.csproj.Fody.CopyLocal.cache
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\bin\Debug\EntityFramework.SqlServer.xml

@@ -3,6 +3,7 @@ using Fitnessclub_WPF.Views;
 using GalaSoft.MvvmLight;
 using System;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Fitnessclub_WPF.ViewModel
@@ -21,7 +22,39 @@ namespace Fitnessclub_WPF.ViewModel
     /// </summary>
     public class MainViewModel : BasisViewModel
     {
-        
+        public Visibility _welkom { get; set; }
+
+        public Visibility _accountpanel { get; set; }
+
+        public string _accountnaam { get; set; }
+
+        public ImageSource _profileimage { get; set; }
+
+        public Visibility Welkom
+        {
+            get { return _welkom; }
+            set { _welkom = value;}
+        }
+
+        public Visibility AccountPanel
+        {
+            get { return _accountpanel; }
+            set { _accountpanel = value; }
+        }
+
+        public string Accountnaam
+        {
+            get { return _accountnaam; }
+            set { _accountnaam = value; }
+        }
+
+        public ImageSource ProfileImage
+        {
+            get { return _profileimage; }
+            set { _profileimage = value; }
+        }
+
+
         public MainViewModel()
         {
            

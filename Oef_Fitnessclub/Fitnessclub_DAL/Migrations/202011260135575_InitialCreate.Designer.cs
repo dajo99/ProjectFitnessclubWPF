@@ -13,7 +13,7 @@ namespace Fitnessclub_DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202011162339056_InitialCreate"; }
+            get { return "202011260135575_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

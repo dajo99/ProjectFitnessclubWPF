@@ -24,7 +24,7 @@
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
-            <StackPanel x:Name="Accountpanel" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Grid.Column="0">
+            <StackPanel x:Name="AccountPanel" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Grid.Column="0">
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignLeftEdges" HorizontalAlignment="Left" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
                         <Button  Content="Account"/>
@@ -38,7 +38,7 @@
                     </materialDesign:Chip.Icon>
                 </materialDesign:Chip>
             </StackPanel>
-            <Label x:Name="lbWelkom" Content="Welkom" FontSize="30" FontWeight="Bold" Margin="30 10 0 0" Grid.Column="0" Visibility="Visible"/>
+            <Label x:Name="Welkom" Content="Welkom" FontSize="30" FontWeight="Bold" Margin="30 10 0 0" Grid.Column="0" Visibility="Visible"/>
             <Button Command="{Binding}" CommandParameter="Afsluiten" Content="Afsluiten" Width="150" VerticalAlignment="Center" Style="{StaticResource MaterialDesignRaisedAccentButton}"  materialDesign:ButtonAssist.CornerRadius="5" Height="30" Grid.Column="1" Grid.ColumnSpan="2" />
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" VerticalAlignment="Center" FontSize="22" Height="36" Grid.Column="0" Margin="463,15,160,9">Fitnessclub</Button>
         </Grid>

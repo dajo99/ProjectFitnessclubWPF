@@ -61,13 +61,13 @@
             Text="{Binding Adres, ValidatesOnDataErrors=True}"/>
 
                 <TextBox 
-            materialDesign:HintAssist.Hint="Rekeningnummer"
+            materialDesign:HintAssist.Hint="Wachtwoord"
             materialDesign:HintAssist.Foreground="Black"
             materialDesign:TextFieldAssist.UnderlineBrush ="Black"
             Grid.Row="1"
             Grid.Column="1"
             Margin="30 20 50 20"
-            Text="{Binding Rekeningnummer, ValidatesOnDataErrors=True}"/>
+            Text="{Binding Wachtwoord, ValidatesOnDataErrors=True}"/>
       
 
             <TextBox 
@@ -77,7 +77,7 @@
             Grid.Row="3"
             Grid.Column="0"
             Margin="50 20 210 20"
-            Text="{Binding Email, ValidatesOnDataErrors=True}"/>
+            Text="{Binding Gemeente, ValidatesOnDataErrors=True}"/>
 
                 <TextBox 
             materialDesign:HintAssist.Hint="Postcode"
@@ -86,7 +86,7 @@
             Grid.Row="3"
             Grid.Column="0"
             Margin="210 20 30 20"
-            Text="{Binding Email, ValidatesOnDataErrors=True}"/>
+            Text="{Binding Postcode, ValidatesOnDataErrors=True}"/>
 
                 
 
@@ -106,11 +106,11 @@
             Grid.Row="4"
             Grid.Column="0"
             Margin="50 20 30 20"
-            Text="{Binding Email, ValidatesOnDataErrors=True}"/>
+            Text="{Binding Land, ValidatesOnDataErrors=True}"/>
                 
                 <StackPanel Grid.RowSpan="3" Grid.Row="2" Grid.Column="1">
-                    <Image Margin="50 20 50 10" Width="110" Height="110"/>
-                    <Button Content="Upload Image" Margin="50 10 50 10"  materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="130" Height="30"/>
+                    <Image Source="{Binding Profielfoto}" Margin="50 20 50 10" Width="110" Height="110"/>
+                    <Button Command="{Binding}" CommandParameter="Uploaden" Content="Upload Image" Margin="50 10 50 10"  materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="130" Height="30"/>
                 </StackPanel>
 
                 
@@ -118,8 +118,8 @@
             
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0 0 0 30">
-            <Button Command="{Binding}" CommandParameter="LogInKlant" HorizontalAlignment="Left" Margin="100 0 200 0"   materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="200" Height="40">Terug</Button>
-            <Button Command="{Binding}" CommandParameter="LogInKlant" HorizontalAlignment="Right" Margin="280 0 0 0"    materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="200" Height="40">Registreren</Button>
+            <Button Command="{Binding}" CommandParameter="Terug" HorizontalAlignment="Left" Margin="100 0 200 0"   materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="200" Height="40">Terug</Button>
+            <Button Command="{Binding}" CommandParameter="Registreren" HorizontalAlignment="Right" Margin="280 0 0 0"    materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="200" Height="40">Registreren</Button>
         </StackPanel>
     </Grid>
 </UserControl>
