@@ -17,12 +17,21 @@ namespace Fitnessclub_WPF
     public partial class App : Application
     {
         private void Application_Startup(object sender, StartupEventArgs e)
-        {  
-            MainView mainView = new MainView();
+        {
+            MainViewModel viewmodel = new MainViewModel();
+            MainView view = new MainView();
+
             WelkomControl usc = new WelkomControl();
             usc.DataContext = new WelkomViewModel();
-            mainView.GridMain.Children.Add(usc);
-            mainView.Show();
+
+            viewmodel.Welkom = "Visible";
+            viewmodel.AccountPanel = "Hidden";
+
+            viewmodel.Control = usc;
+            view.DataContext = viewmodel;
+            view.Show();
+
+            
         }
     }
 }

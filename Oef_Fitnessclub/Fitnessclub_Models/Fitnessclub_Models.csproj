@@ -31,6 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DtHelper.cs" />
     <Compile Include="SecurePassword.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserControlHelper\ControlSwitch.cs" />
+    <Compile Include="UserControlStatic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fitnessclub_DAL\Fitnessclub_DAL.csproj">

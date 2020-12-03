@@ -10,7 +10,6 @@
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             Background="Beige"
              FontFamily="{DynamicResource MaterialDesignFont}"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="1080"
@@ -18,7 +17,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Width="500">
             <Label Content="Inloggen" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 25 0 12"/>
-            <Label Content="{Binding Title}" FontSize="20" HorizontalAlignment="Center"/>
+            <Label Content="{Binding WindowTitle}" FontSize="20" HorizontalAlignment="Center"/>
             <Separator Margin="130 0 130 0" materialDesign:ShadowAssist.Darken="True"></Separator>
             <TextBox 
             materialDesign:HintAssist.Hint="Email"
@@ -26,7 +25,7 @@
             materialDesign:TextFieldAssist.UnderlineBrush ="Black"
                 Margin="50 60 50 40"
             Text="{Binding Email, ValidatesOnDataErrors=True}"/>
-            
+
             <components:BindablePasswordBox 
             materialDesign:HintAssist.Hint="Wachtwoord"
             materialDesign:HintAssist.Foreground="Black"
@@ -48,7 +47,7 @@
             Margin="50 0 50 100"
             materialDesign:ShadowAssist.ShadowDepth="Depth0"
             Width="Auto"/>
-            
+
             <Button Command="{Binding}" CommandParameter="LogInKlant" VerticalAlignment="Bottom"   materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="250" Height="50">Aanmelden</Button>
 
             <Button 
@@ -63,7 +62,9 @@
             HorizontalAlignment="Center"
             HorizontalContentAlignment="Left"
             materialDesign:ShadowAssist.ShadowDepth="Depth0"
-            Width="Auto"/>
-        </StackPanel>     
+            Width="Auto"
+            Visibility="{Binding GeenAccountVisibility}"/>
+        </StackPanel>
+        <Button Command="{Binding}" CommandParameter="Terug" VerticalAlignment="Bottom"   materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Height="36" Content="Terug" Margin="52,0,900,28"/>
     </Grid>
 </UserControl>

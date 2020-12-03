@@ -1,6 +1,7 @@
 ﻿using Fitnessclub_DAL;
 using Fitnessclub_DAL.Models;
 using Fitnessclub_Models;
+using Fitnessclub_Models.UserControlHelper;
 using Fitnessclub_WPF.UserControls;
 using Fitnessclub_WPF.Views;
 using Microsoft.Win32;
@@ -161,18 +162,24 @@ namespace Fitnessclub_WPF.ViewModel
                     if (ok > 0)
                     {
                         User.klant = k; //nodig om account van de klant te onthouden
-                        main.Accountnaam.Content = k.Voornaam;
-                        main.ProfileImage.Source = myImage;
-                        main.Welkom.Visibility = Visibility.Hidden;
-                        main.AccountPanel.Visibility = Visibility.Visible;
-                        
+                        //main.Accountnaam.Content = k.Voornaam;
+                        ControlSwitch.SetContent(k.Voornaam, "Accountnaam");
+
+                        ControlSwitch.SetImage(op.FileName,"ProfileImage");
+
+                        //main.Welkom.Visibility = Visibility.Hidden;
+                        ControlSwitch.ChangePropertyVisibility("Hidden", "Welkom");
+                        //main.AccountPanel.Visibility = Visibility.Visible;
+                        ControlSwitch.ChangePropertyVisibility("Visible", "AccountPanel");
+
 
 
                         //Nieuwe usercontrol oproepen
-                        main.GridMain.Children.Clear();
+
                         UserControl usc = new FunctiesKlantControl();
                         usc.DataContext = new FunctiesKlantViewModel();
-                        main.GridMain.Children.Add(usc);
+                        ControlSwitch.InvokeSwitch(usc, "Functies");
+
                     }
                     else
                     {
@@ -212,10 +219,10 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Terug()
         {
-            main.GridMain.Children.Clear();
+           
             WelkomControl usc = new WelkomControl();
             usc.DataContext = new WelkomViewModel();
-            main.GridMain.Children.Add(usc);
+            
         }
 
 

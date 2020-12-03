@@ -98,6 +98,9 @@
     <Compile Include="UserControls\FunctiesKlantControl.xaml.cs">
       <DependentUpon>FunctiesKlantControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LogboekControl.xaml.cs">
+      <DependentUpon>LogboekControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LogInControl.xaml.cs">
       <DependentUpon>LogInControl.xaml</DependentUpon>
     </Compile>
@@ -112,11 +115,13 @@
     </Compile>
     <Compile Include="ViewModel\BasisViewModel.cs" />
     <Compile Include="ViewModel\FunctiesKlantViewModel.cs" />
+    <Compile Include="ViewModel\LogboekViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewmodel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\WelkomViewModel.cs" />
+    <Compile Include="ViewModel\WorkoutsKlantViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -129,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\FunctiesKlantControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LogboekControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

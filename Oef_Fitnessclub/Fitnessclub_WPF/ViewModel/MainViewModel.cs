@@ -1,42 +1,34 @@
+using Fitnessclub_Models.UserControlHelper;
 using Fitnessclub_WPF.UserControls;
 using Fitnessclub_WPF.Views;
 using GalaSoft.MvvmLight;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class MainViewModel : BasisViewModel
     {
-        public Visibility _welkom { get; set; }
+        private string _windowTitle;
+        private UserControl _control;
+        public string _welkom { get; set; }
 
-        public Visibility _accountpanel { get; set; }
+        public string _accountpanel { get; set; }
 
         public string _accountnaam { get; set; }
 
-        public ImageSource _profileimage { get; set; }
+        public string _profileimage { get; set; }
 
-        public Visibility Welkom
+        public string Welkom
         {
             get { return _welkom; }
             set { _welkom = value;}
         }
 
-        public Visibility AccountPanel
+        public string AccountPanel
         {
             get { return _accountpanel; }
             set { _accountpanel = value; }
@@ -48,20 +40,90 @@ namespace Fitnessclub_WPF.ViewModel
             set { _accountnaam = value; }
         }
 
-        public ImageSource ProfileImage
+        public string ProfileImage
         {
             get { return _profileimage; }
             set { _profileimage = value; }
+        }
+        public UserControl Control
+        {
+            get
+            {
+                return _control;
+            }
+            set
+            {
+                _control = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public string WindowTitle
+        {
+            get { return _windowTitle; }
+            set
+            {
+                _windowTitle = value;
+                NotifyPropertyChanged();
+            }
         }
 
 
         public MainViewModel()
         {
-           
+            ControlSwitch.UscEvent += SwitchControl;
+            ControlSwitch.VisibilityEvent += ChangePropertyVisibility;
+            ControlSwitch.ImageEvent += SetImage;
+            ControlSwitch.ContentEvent += SetContent;
 
         }
 
-        
+        private void SetContent(string content, string Property)
+        {
+            switch (Property.ToString())
+            {
+                case "Accountnaam":
+                    Accountnaam = content;
+                    break;
+                
+
+            }
+        }
+
+        public void SwitchControl(UserControl usc, string title)
+        {
+            Control = usc;
+            WindowTitle = title;
+
+        }
+
+        public void ChangePropertyVisibility(string visibility, string Property)
+        {
+            switch (Property.ToString())
+            {
+                case "AccountPanel":
+                    AccountPanel = visibility;
+                    break;
+                case "Welkom":
+                    Welkom = visibility;
+                    break;
+               
+            }
+        }
+
+        public void SetImage(string Image, string Property)
+        {
+            switch (Property)
+            {
+                case "ProfileImage":
+                    ProfileImage = Image;
+                    break;
+                
+
+            }
+        }
+
+
         public override string this[string columnName] => throw new NotImplementedException();
         public override bool CanExecute(object parameter)
         {

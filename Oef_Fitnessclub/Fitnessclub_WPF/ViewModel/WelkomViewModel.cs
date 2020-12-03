@@ -1,4 +1,6 @@
-﻿using Fitnessclub_WPF.UserControls;
+﻿using Fitnessclub_Models;
+using Fitnessclub_Models.UserControlHelper;
+using Fitnessclub_WPF.UserControls;
 using Fitnessclub_WPF.Views;
 using System;
 using System.Collections.Generic;
@@ -10,10 +12,8 @@ namespace Fitnessclub_WPF.ViewModel
 {
     public class WelkomViewModel:BasisViewModel
     {
-        MainView main = (MainView)App.Current.MainWindow;
         public WelkomViewModel()
         {
-
 
         }
 
@@ -33,15 +33,28 @@ namespace Fitnessclub_WPF.ViewModel
                 case "Klant":
                     LogInKlant();
                     break;
+                case "Administrator":
+                    LogInAdministrator();
+                    break;
 
             }
         }
+
+        private void LogInAdministrator()
+        {
+            UserControlStatic.Title = "Administrator";
+            UserControls.LogInControl usc = new UserControls.LogInControl();
+            usc.DataContext = new LogInViewModel();
+            ControlSwitch.InvokeSwitch(usc, "Administrator");
+            
+        }
+
         private void LogInKlant()
         {
-            main.GridMain.Children.Clear();
-            LogInControl usc = new LogInControl();
+            UserControls.LogInControl usc = new UserControls.LogInControl();
             usc.DataContext = new LogInViewModel();
-            main.GridMain.Children.Add(usc);
+            ControlSwitch.InvokeSwitch(usc, "Klant");
+
         }
     }
     

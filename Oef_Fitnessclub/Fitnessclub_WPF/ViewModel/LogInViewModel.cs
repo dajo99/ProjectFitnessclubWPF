@@ -1,6 +1,7 @@
 ﻿using Fitnessclub_DAL;
 using Fitnessclub_DAL.Models;
 using Fitnessclub_Models;
+using Fitnessclub_Models.UserControlHelper;
 using Fitnessclub_WPF.UserControls;
 using Fitnessclub_WPF.Views;
 using System;
@@ -17,11 +18,26 @@ namespace Fitnessclub_WPF.ViewModel
 {
     public class LogInViewModel : BasisViewModel
     {
-        MainView main = (MainView)App.Current.MainWindow;
 
         private string _email;
         private string _wachtwoord;
         private string _melding;
+        private string _geenAccountVisibility;
+
+        private string _windowTitle;
+
+        public string WindowTitle
+        {
+            get { return _windowTitle; }
+            set { _windowTitle = value; }
+        }
+
+        public string GeenAccountVisibility
+        {
+            get { return _geenAccountVisibility; }
+            set { _geenAccountVisibility = value; }
+        }
+
 
         public string Melding
         {
@@ -53,39 +69,70 @@ namespace Fitnessclub_WPF.ViewModel
             }
         }
         
+        public LogInViewModel()
+        {
+            if (UserControlStatic.Title == "Administrator")
+            {
+                WindowTitle = "Administrator";
+                GeenAccountVisibility = "Hidden";
+            }
+            else
+            {
+                WindowTitle = "Klant";
+            }
 
+        }
+
+        
 
         public void Inloggen()
         {
+            Persoon b;
+            if (UserControlStatic.Title == "Administrator")
+            {
+                Werkgever w = new Werkgever();
+                w.Email = Email;
+                w.Wachtwoord = Wachtwoord;
 
-            Klant k = new Klant();
-            k.Email = Email;
-            k.Wachtwoord = Wachtwoord;
+                 b = DataManager.OphalenKlantViaKlantMail(w.Email);
+            }
+            else
+            {
+                Klant k = new Klant();
+                k.Email = Email;
+                k.Wachtwoord = Wachtwoord;
 
-            Persoon b = DataManager.OphalenKlantViaKlantMail(k.Email);
+                b = DataManager.OphalenKlantViaKlantMail(k.Email);
+            }
+            
             if (b != null)
             {
                 string dp = SecurePassword.DecryptString(b.Wachtwoord); //deëncrypteren van database-wachtwoord van account;
-                if (k.Wachtwoord == dp)
+                if (Wachtwoord == dp)
                 {
                     User.persoon = b ; //nodig om account van de klant te onthouden
-                    main.Accountnaam.Content = b.Voornaam;
+                    ControlSwitch.SetContent(b.Voornaam, "Accountnaam");
                     if (b.Profielfoto != null)
                     {
-                        string profielImage = Encoding.ASCII.GetString(k.Profielfoto);
-                        main.ProfileImage.Source = new BitmapImage(new Uri(profielImage));
+                        string profielImage = Encoding.ASCII.GetString(b.Profielfoto);
+
+                        //main.ProfileImage.Source = new BitmapImage(new Uri(profielImage));
+                        ControlSwitch.SetImage(profielImage, "ProfileImage");
+
                     }
 
-                    main.Welkom.Visibility = Visibility.Hidden;
-                    main.AccountPanel.Visibility = Visibility.Visible;
+                    ControlSwitch.ChangePropertyVisibility("Hidden", "Welkom");
+                    //main.AccountPanel.Visibility = Visibility.Visible;
+                    ControlSwitch.ChangePropertyVisibility("Visible", "AccountPanel");
 
 
 
                     //Nieuwe usercontrol oproepen
-                    main.GridMain.Children.Clear();
+
                     UserControl usc = new FunctiesKlantControl();
                     usc.DataContext = new FunctiesKlantViewModel();
-                    main.GridMain.Children.Add(usc);
+                    ControlSwitch.InvokeSwitch(usc, "Functies");
+
 
                 }
 
@@ -106,10 +153,10 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Registreren()
         {
-            main.GridMain.Children.Clear();
             RegisterControl usc = new RegisterControl();
             usc.DataContext = new RegisterViewmodel();
-            main.GridMain.Children.Add(usc);
+            ControlSwitch.InvokeSwitch(usc, "Registreren");
+
         }
 
 
@@ -144,10 +191,15 @@ namespace Fitnessclub_WPF.ViewModel
             {
                 case "LogInKlant": Inloggen(); break;
                 case "GeenAccount": Registreren(); break;
+                case "Terug": Terug(); break;
+
 
             }
         }
 
-
+        private void Terug()
+        {
+            
+        }
     }
 }

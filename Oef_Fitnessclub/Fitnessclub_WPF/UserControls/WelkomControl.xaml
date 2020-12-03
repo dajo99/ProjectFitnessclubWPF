@@ -28,7 +28,7 @@
         <Image Source="{StaticResource Main}" Margin="0 10 0 0" Grid.Column="0" Grid.Row="1" Height="350"  Width="350">
 
         </Image>
-        <Button Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0 60 0 0" materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="350" Height="60">Administrator</Button>
+        <Button Command="{Binding}" CommandParameter="Administrator" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0 60 0 0" materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="350" Height="60">Administrator</Button>
         <Button Command="{Binding}" CommandParameter="Klant" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="0 0 0 160" materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Width="350" Height="60">Klant</Button>
 
     </Grid>

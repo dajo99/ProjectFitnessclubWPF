@@ -24,7 +24,7 @@
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
             </Grid.Effect>
-            <StackPanel x:Name="AccountPanel" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Hidden" Grid.Column="0">
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Visibility="{Binding AccountPanel}" Grid.Column="0">
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignLeftEdges" HorizontalAlignment="Left" StaysOpen="False" Margin="10">
                     <StackPanel Width="150">
                         <Button  Content="Account"/>
@@ -32,21 +32,20 @@
                         <Button  Content="Logout"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
-                <materialDesign:Chip x:Name="Accountnaam" Background="#555555" HorizontalAlignment="Right" Margin="0,14" Width="96">
+                <materialDesign:Chip Content="{Binding Accountnaam}"  HorizontalAlignment="Right" Margin="0,14">
                     <materialDesign:Chip.Icon>
-                        <Image x:Name="ProfileImage"/>
+                        <Image Source="{Binding ProfileImage}"/>
                     </materialDesign:Chip.Icon>
                 </materialDesign:Chip>
             </StackPanel>
-            <Label x:Name="Welkom" Content="Welkom" FontSize="30" FontWeight="Bold" Margin="30 10 0 0" Grid.Column="0" Visibility="Visible"/>
+            <Label Content="Welkom" FontSize="30" FontWeight="Bold" Margin="30 10 0 0" Grid.Column="0" Visibility="{Binding Welkom}"/>
             <Button Command="{Binding}" CommandParameter="Afsluiten" Content="Afsluiten" Width="150" VerticalAlignment="Center" Style="{StaticResource MaterialDesignRaisedAccentButton}"  materialDesign:ButtonAssist.CornerRadius="5" Height="30" Grid.Column="1" Grid.ColumnSpan="2" />
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" VerticalAlignment="Center" FontSize="22" Height="36" Grid.Column="0" Margin="463,15,160,9">Fitnessclub</Button>
         </Grid>
-        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1080">
-           
+        
+        <!--usercontrol grid-->
+        <ContentControl Content="{Binding Control}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1080">
 
-
-
-        </Grid>
+        </ContentControl>
     </Grid>
 </Window>

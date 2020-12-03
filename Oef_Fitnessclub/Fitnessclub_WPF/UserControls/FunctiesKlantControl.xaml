@@ -30,10 +30,19 @@
 
 
         <Label Content="Workout" Grid.Column="0" Grid.Row="1" Margin="10" FontSize="30" HorizontalAlignment="Center"/>
-        <Image Source="{StaticResource Workout}" Margin="0 10 0 0" Grid.Column="0" Grid.Row="1" Height="300"  Width="300" materialDesign:ShadowAssist.ShadowEdges="All"/>
+        <Button  Height="300"  Width="300" Margin="0 10 0 0" Grid.Column="0" Grid.Row="1" Command="{Binding}" CommandParameter="Workout">
+            <Button.Background>
+                <ImageBrush ImageSource="{StaticResource Workout}"/>
+            </Button.Background>
+        </Button>
+        
 
         <Label Content="Logboek" Grid.Column="1" Grid.Row="1" Margin="10" FontSize="30" HorizontalAlignment="Center"/>
-        <Image Source="{StaticResource Logboek}" Margin="0 10 0 0" Grid.Column="1" Grid.Row="1" Height="300"  Width="300"/>
+        <Button  Height="300"  Width="300" Margin="0 10 0 0" Grid.Column="1" Grid.Row="1" Command="{Binding}" CommandParameter="Logboek">
+            <Button.Background>
+                <ImageBrush ImageSource="{StaticResource Logboek}"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </UserControl>

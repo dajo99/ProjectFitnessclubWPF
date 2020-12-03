@@ -62,5 +62,33 @@ namespace Fitnessclub_DAL
             }
         }
 
+        public static List<Oefening> OphalenOefeningen()
+        {
+            using (FitnessclubEntities Entities = new FitnessclubEntities())
+            {
+                return Entities.Oefeningen
+                    .OrderBy(x => x.Naam)
+                    .ToList();
+            }
+
+        }
+
+        public static int ToevoegenLogoefening(Log_Oefening log_Oefening)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+                    Entities.Log_Workouts.Add(log_Oefening);
+                    return Entities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
+            }
+        }
+
     }
 }
