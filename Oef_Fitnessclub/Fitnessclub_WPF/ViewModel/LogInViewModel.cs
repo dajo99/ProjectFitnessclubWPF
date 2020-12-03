@@ -110,7 +110,7 @@ namespace Fitnessclub_WPF.ViewModel
                 string dp = SecurePassword.DecryptString(b.Wachtwoord); //deëncrypteren van database-wachtwoord van account;
                 if (Wachtwoord == dp)
                 {
-                    User.persoon = b ; //nodig om account van de klant te onthouden
+                    User.persoon = b; //nodig om account van de klant te onthouden
                     ControlSwitch.SetContent(b.Voornaam, "Accountnaam");
                     if (b.Profielfoto != null)
                     {
@@ -128,10 +128,20 @@ namespace Fitnessclub_WPF.ViewModel
 
 
                     //Nieuwe usercontrol oproepen
+                    if (b.Voornaam == "Admin")
+                    {
+                        UserControl usc = new FunctiesAdminControl();
+                        usc.DataContext = new FunctiesAdminViewModel();
+                        ControlSwitch.InvokeSwitch(usc, "Functies");
+                    }
+                    else
+                    {
+                        UserControl usc = new FunctiesKlantControl();
+                        usc.DataContext = new FunctiesKlantViewModel();
+                        ControlSwitch.InvokeSwitch(usc, "Functies");
+                    }
 
-                    UserControl usc = new FunctiesKlantControl();
-                    usc.DataContext = new FunctiesKlantViewModel();
-                    ControlSwitch.InvokeSwitch(usc, "Functies");
+                   
 
 
                 }
@@ -199,7 +209,9 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Terug()
         {
-            
+            WelkomControl usc = new WelkomControl();
+            usc.DataContext = new WelkomViewModel();
+            ControlSwitch.InvokeSwitch(usc, "Welkom");
         }
     }
 }

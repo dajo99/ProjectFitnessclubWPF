@@ -13,8 +13,7 @@
              TextOptions.TextRenderingMode="Auto"
              FontFamily="{DynamicResource MaterialDesignFont}"
              mc:Ignorable="d" 
-             d:DesignHeight="540" d:DesignWidth="1080"
-             DataContext="{Binding FunctiesKlant, Source={StaticResource Locator}}">
+             d:DesignHeight="540" d:DesignWidth="1080">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -27,7 +26,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="Klant" Grid.Column="0" Grid.Row="0" Margin="20" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <Label Content="Workouts" Grid.ColumnSpan="2" Margin="20" FontSize="40" HorizontalAlignment="Center"/>
+        <Label Content="Workout" Grid.ColumnSpan="2" Margin="20" FontSize="40" HorizontalAlignment="Center"/>
 
         <StackPanel Grid.Row="1" Grid.Column="0" >
 
@@ -44,7 +43,7 @@
             <Label Content="Gekozen Oefeningen" FontSize="20" HorizontalAlignment="Center"/>
             <StackPanel>
                 <Label Content="{Binding Datum}" ContentStringFormat="{}{0:dd/MM/yyyy}" FontSize="20" HorizontalAlignment="Center"/>
-                <ListBox ItemsSource="{Binding Gekozen}" DisplayMemberPath="Naam" Margin="20 20 0 0" HorizontalAlignment="Center"/>
+                <Label Content="{Binding GekozenOefening}" Margin="20 20 0 0" HorizontalAlignment="Center"/>
                 <Label Content="{Binding Resultaat}" Margin="20 20 0 0" HorizontalAlignment="Center"/>
                 <Label Content="Deze gegevens komen in het logboek terecht." Margin="20 20 0 0" HorizontalAlignment="Center"/>
             </StackPanel>

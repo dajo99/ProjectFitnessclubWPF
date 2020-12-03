@@ -45,6 +45,7 @@ namespace Fitnessclub_DAL
 
         }
 
+
         public static int ToevoegenKlant(Klant klant)
         {
             try
@@ -88,6 +89,49 @@ namespace Fitnessclub_DAL
                 FileOperations.Foutloggen(ex);
                 return 0;
             }
+        }
+
+        public static int ToevoegenLog(Log log)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+                    Entities.Logs.Add(log);
+                    return Entities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
+            }
+        }
+
+        public static List<Log> OphalenLog(int Klantid)
+        {
+            using (FitnessclubEntities Entities = new FitnessclubEntities())
+            {
+                return Entities.Logs
+                    .Where(x=> x.KlantID == Klantid)
+                    .OrderBy(x => x.LogID)
+                    .ToList();
+                    
+            }
+
+        }
+
+        public static List<Log_Oefening> OphalenLogOefeningen(int Klantid)
+        {
+            using (FitnessclubEntities Entities = new FitnessclubEntities())
+            {
+                return Entities.Log_Workouts
+                    .Where(x => x.Log.KlantID == Klantid)
+                    .OrderBy(x => x.LogID)
+                    .ToList();
+
+            }
+
         }
 
     }

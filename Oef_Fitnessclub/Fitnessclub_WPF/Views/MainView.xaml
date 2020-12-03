@@ -29,7 +29,7 @@
                     <StackPanel Width="150">
                         <Button  Content="Account"/>
                         <Separator/>
-                        <Button  Content="Logout"/>
+                        <Button  Content="Logout" Command="{Binding}" CommandParameter="Logout"/>
                     </StackPanel>
                 </materialDesign:PopupBox>
                 <materialDesign:Chip Content="{Binding Accountnaam}"  HorizontalAlignment="Right" Margin="0,14">

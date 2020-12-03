@@ -1,3 +1,4 @@
+using Fitnessclub_Models;
 using Fitnessclub_Models.UserControlHelper;
 using Fitnessclub_WPF.UserControls;
 using Fitnessclub_WPF.Views;
@@ -123,13 +124,6 @@ namespace Fitnessclub_WPF.ViewModel
             }
         }
 
-
-        public override string this[string columnName] => throw new NotImplementedException();
-        public override bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
         public void Close()
         {
             MessageBoxResult Result = MessageBox.Show("Ben je zeker dat je wilt afsluiten?", "Afsluiten", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -140,6 +134,15 @@ namespace Fitnessclub_WPF.ViewModel
             }
 
         }
+
+
+        public override string this[string columnName] => throw new NotImplementedException();
+        public override bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        
        
         public override void Execute(object parameter)
         {
@@ -147,9 +150,28 @@ namespace Fitnessclub_WPF.ViewModel
             {
                 case "Afsluiten":
                     Close();
-                    break;  
+                    break;
+                case "Logout":
+                    LogOut();
+                    break;
 
             }
+        }
+
+        private void LogOut()
+        {
+            //User en profielfoto leegmaken
+            User.persoon = null;
+            ProfileImage = null;
+
+            //knoppen enablen
+            AccountPanel = "Hidden";
+            Welkom = "Visible";
+
+            //Nieuw scherm oproepen
+            WelkomControl usc = new WelkomControl();
+            usc.DataContext = new WelkomViewModel();
+            ControlSwitch.InvokeSwitch(usc, "Welkom");
         }
     }
 }

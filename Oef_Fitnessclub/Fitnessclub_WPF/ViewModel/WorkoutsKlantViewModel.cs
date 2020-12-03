@@ -17,8 +17,8 @@ namespace Fitnessclub_WPF.ViewModel
     public class WorkoutsKlantViewModel: BasisViewModel
     {
         private ObservableCollection<Oefening> _oefeningen;
-        private ObservableCollection<Oefening> _gekozen;
         private string _selectieTrainer;
+        private string _gekozenOefening;
         bool trainerNodig;
         string trainer;
 
@@ -26,10 +26,17 @@ namespace Fitnessclub_WPF.ViewModel
 
         private DateTime _datum;
         private string _resultaat;
-        Log log = new Log();
+        Log_Oefening logoefening = new Log_Oefening();
 
-
-        List<Oefening> gekozenoefeningen = new List<Oefening>();
+        public string GekozenOefening
+        {
+            get { return _gekozenOefening; }
+            set
+            {
+                _gekozenOefening = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public string SelectieTrainer
         {
@@ -49,15 +56,7 @@ namespace Fitnessclub_WPF.ViewModel
             set { _resultaat = value; }
         }
 
-        public ObservableCollection<Oefening> Gekozen
-        {
-            get { return _gekozen; }
-            set
-            {
-                _gekozen = value;
-                NotifyPropertyChanged();
-            }
-        }
+        
         public DateTime Datum 
         {
             get { return _datum; }
@@ -107,8 +106,9 @@ namespace Fitnessclub_WPF.ViewModel
         {
             if (GeselecteerdeOefening!=null)
             {
-                gekozenoefeningen.Add(GeselecteerdeOefening);
-                Gekozen = new ObservableCollection<Oefening>(gekozenoefeningen);
+                GekozenOefening = GeselecteerdeOefening.Naam;
+                logoefening.OefeningID = GeselecteerdeOefening.OefeningID;
+                logoefening.Oefening = GeselecteerdeOefening;
 
             }
             else
@@ -168,26 +168,47 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Bevestigen()
         {
-            if (Datum != null && Gekozen != null && Resultaat!=null)
+            if (Datum != null && GekozenOefening != "" && Resultaat!=null)
             {
-                
-                foreach (var item in Gekozen)
-                {
-                    Log_Oefening logoefening = new Log_Oefening();
-                    logoefening.OefeningID = item.OefeningID;
-                    logoefening.LogID = log.LogID;
-                    int ok = DataManager.ToevoegenLogoefening(logoefening);
-                    if (ok>0)
-                    {
-                        MessageBox.Show("gelukt");
-                    }
-                }
-    
+                Log log = new Log();
                 log.Datum = Datum;
-                log.KlantID = User.klant.KlantID;
+                log.KlantID = User.persoon.PersoonID;
                 log.TrainerNodig = trainerNodig;
                 log.Trainer = trainer;
                 log.Review = "";
+                int ok = DataManager.ToevoegenLog(log);
+                if (ok>0)
+                {
+                    MessageBox.Show("log is toegevoegd");
+
+                    List<Log> lijst = DataManager.OphalenLog(User.persoon.PersoonID);
+                    int logid = 0;
+                    foreach (var item in lijst)
+                    {
+                        MessageBox.Show(item.LogID.ToString());
+                        logid = item.LogID;
+                        logoefening.Log = item;
+
+                    }
+
+                    logoefening.LogID = logid;
+                    
+
+                    int resultaat = DataManager.ToevoegenLogoefening(logoefening);
+                    if (resultaat>0)
+                    {
+                        MessageBox.Show("logoefening is tooeegevoegd");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fail2");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Fail1");
+                }
 
                 
             }

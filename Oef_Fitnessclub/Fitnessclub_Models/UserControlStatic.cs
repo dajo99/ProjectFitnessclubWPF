@@ -10,6 +10,5 @@ namespace Fitnessclub_Models
     public static class UserControlStatic
     {
         public static string Title { get; set; }
-        public static UserControl VorigeUsercontrol { get; set; }
     }
 }

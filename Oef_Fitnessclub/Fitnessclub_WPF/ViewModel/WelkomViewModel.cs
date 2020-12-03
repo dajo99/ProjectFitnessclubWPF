@@ -51,6 +51,7 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void LogInKlant()
         {
+            UserControlStatic.Title = "Klant";
             UserControls.LogInControl usc = new UserControls.LogInControl();
             usc.DataContext = new LogInViewModel();
             ControlSwitch.InvokeSwitch(usc, "Klant");

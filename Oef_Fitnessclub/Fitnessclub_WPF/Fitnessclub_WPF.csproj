@@ -95,8 +95,14 @@
     <Compile Include="Components\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FunctiesAdminControl.xaml.cs">
+      <DependentUpon>FunctiesAdminControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FunctiesKlantControl.xaml.cs">
       <DependentUpon>FunctiesKlantControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\KlantenlijstControl.xaml.cs">
+      <DependentUpon>KlantenlijstControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\LogboekControl.xaml.cs">
       <DependentUpon>LogboekControl.xaml</DependentUpon>
@@ -114,6 +120,7 @@
       <DependentUpon>WorkoutsKlantControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BasisViewModel.cs" />
+    <Compile Include="ViewModel\FunctiesAdminViewModel.cs" />
     <Compile Include="ViewModel\FunctiesKlantViewModel.cs" />
     <Compile Include="ViewModel\LogboekViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
@@ -133,7 +140,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\FunctiesAdminControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\FunctiesKlantControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\KlantenlijstControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

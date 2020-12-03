@@ -219,10 +219,10 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Terug()
         {
-           
-            WelkomControl usc = new WelkomControl();
-            usc.DataContext = new WelkomViewModel();
-            
+            UserControls.LogInControl usc = new UserControls.LogInControl();
+            usc.DataContext = new LogInViewModel();
+            ControlSwitch.InvokeSwitch(usc, "Klant");
+
         }
 
 
