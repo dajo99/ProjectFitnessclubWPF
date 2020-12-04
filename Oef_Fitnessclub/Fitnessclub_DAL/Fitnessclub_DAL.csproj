@@ -79,6 +79,10 @@
     <Compile Include="Migrations\202012030202198_updateoefeningen1.designer.cs">
       <DependentUpon>202012030202198_updateoefeningen1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012031751343_updatewerkgever.cs" />
+    <Compile Include="Migrations\202012031751343_updatewerkgever.designer.cs">
+      <DependentUpon>202012031751343_updatewerkgever.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Klant.cs" />
     <Compile Include="Models\Log.cs" />
@@ -111,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012030202198_updateoefeningen1.resx">
       <DependentUpon>202012030202198_updateoefeningen1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012031751343_updatewerkgever.resx">
+      <DependentUpon>202012031751343_updatewerkgever.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

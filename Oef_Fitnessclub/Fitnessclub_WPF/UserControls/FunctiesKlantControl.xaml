@@ -10,11 +10,9 @@
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             Background="Beige"
              FontFamily="{DynamicResource MaterialDesignFont}"
              mc:Ignorable="d" 
-             d:DesignHeight="540" d:DesignWidth="1080"
-             DataContext="{Binding FunctiesKlant, Source={StaticResource Locator}}">
+             d:DesignHeight="540" d:DesignWidth="1080">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

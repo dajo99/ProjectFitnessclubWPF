@@ -113,6 +113,9 @@
     <Compile Include="UserControls\RegisterControl.xaml.cs">
       <DependentUpon>RegisterControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TrainerToewijzenControl.xaml.cs">
+      <DependentUpon>TrainerToewijzenControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WelkomControl.xaml.cs">
       <DependentUpon>WelkomControl.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,7 @@
     <Compile Include="ViewModel\BasisViewModel.cs" />
     <Compile Include="ViewModel\FunctiesAdminViewModel.cs" />
     <Compile Include="ViewModel\FunctiesKlantViewModel.cs" />
+    <Compile Include="ViewModel\KlantenlijstViewmodel.cs" />
     <Compile Include="ViewModel\LogboekViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -161,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\RegisterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TrainerToewijzenControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

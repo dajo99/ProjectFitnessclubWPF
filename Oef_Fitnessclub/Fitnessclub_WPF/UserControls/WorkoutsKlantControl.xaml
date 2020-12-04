@@ -40,7 +40,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="2">
-            <Label Content="Gekozen Oefeningen" FontSize="20" HorizontalAlignment="Center"/>
+            <Label Content="Gekozen Oefening" FontSize="20" HorizontalAlignment="Center"/>
             <StackPanel>
                 <Label Content="{Binding Datum}" ContentStringFormat="{}{0:dd/MM/yyyy}" FontSize="20" HorizontalAlignment="Center"/>
                 <Label Content="{Binding GekozenOefening}" Margin="20 20 0 0" HorizontalAlignment="Center"/>

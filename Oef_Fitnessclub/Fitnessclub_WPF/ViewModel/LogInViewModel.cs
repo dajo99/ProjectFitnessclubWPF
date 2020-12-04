@@ -23,9 +23,14 @@ namespace Fitnessclub_WPF.ViewModel
         private string _wachtwoord;
         private string _melding;
         private string _geenAccountVisibility;
-
+        private string _gegevens;
         private string _windowTitle;
 
+        public string Gegevens
+        {
+            get { return _gegevens; }
+            set { _gegevens = value; }
+        }
         public string WindowTitle
         {
             get { return _windowTitle; }
@@ -75,10 +80,12 @@ namespace Fitnessclub_WPF.ViewModel
             {
                 WindowTitle = "Administrator";
                 GeenAccountVisibility = "Hidden";
+                Gegevens = "Visible";
             }
             else
             {
                 WindowTitle = "Klant";
+                Gegevens = "Hidden";
             }
 
         }
@@ -104,57 +111,64 @@ namespace Fitnessclub_WPF.ViewModel
 
                 b = DataManager.OphalenKlantViaKlantMail(k.Email);
             }
-            
-            if (b != null)
+            if ((b.Voornaam == "Admin" && UserControlStatic.Title == "Klant") || (b.Voornaam != "Admin" && UserControlStatic.Title == "Administrator"))
             {
-                string dp = SecurePassword.DecryptString(b.Wachtwoord); //deëncrypteren van database-wachtwoord van account;
-                if (Wachtwoord == dp)
-                {
-                    User.persoon = b; //nodig om account van de klant te onthouden
-                    ControlSwitch.SetContent(b.Voornaam, "Accountnaam");
-                    if (b.Profielfoto != null)
-                    {
-                        string profielImage = Encoding.ASCII.GetString(b.Profielfoto);
-
-                        //main.ProfileImage.Source = new BitmapImage(new Uri(profielImage));
-                        ControlSwitch.SetImage(profielImage, "ProfileImage");
-
-                    }
-
-                    ControlSwitch.ChangePropertyVisibility("Hidden", "Welkom");
-                    //main.AccountPanel.Visibility = Visibility.Visible;
-                    ControlSwitch.ChangePropertyVisibility("Visible", "AccountPanel");
-
-
-
-                    //Nieuwe usercontrol oproepen
-                    if (b.Voornaam == "Admin")
-                    {
-                        UserControl usc = new FunctiesAdminControl();
-                        usc.DataContext = new FunctiesAdminViewModel();
-                        ControlSwitch.InvokeSwitch(usc, "Functies");
-                    }
-                    else
-                    {
-                        UserControl usc = new FunctiesKlantControl();
-                        usc.DataContext = new FunctiesKlantViewModel();
-                        ControlSwitch.InvokeSwitch(usc, "Functies");
-                    }
-
-                   
-
-
-                }
-
-                else
-                {
-                    MessageBox.Show("De opgegeven mail en het wachtwoord komen niet overeen!", "foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                MessageBox.Show("Verkeerde inlogpagina!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("Deze mail bestaat niet!", "foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (b != null)
+                {
+                    string dp = SecurePassword.DecryptString(b.Wachtwoord); //deëncrypteren van database-wachtwoord van account;
+                    if (Wachtwoord == dp)
+                    {
+                        User.persoon = b; //nodig om account van de klant te onthouden
+                        ControlSwitch.SetContent(b.Voornaam, "Accountnaam");
+                        if (b.Profielfoto != null)
+                        {
+                            string profielImage = Encoding.ASCII.GetString(b.Profielfoto);
+
+                            //main.ProfileImage.Source = new BitmapImage(new Uri(profielImage));
+                            ControlSwitch.SetImage(profielImage, "ProfileImage");
+
+                        }
+
+                        ControlSwitch.ChangePropertyVisibility("Hidden", "Welkom");
+                        //main.AccountPanel.Visibility = Visibility.Visible;
+                        ControlSwitch.ChangePropertyVisibility("Visible", "AccountPanel");
+
+
+
+                        //Nieuwe usercontrol oproepen
+                        if (b.Voornaam == "Admin")
+                        {
+                            UserControl usc = new FunctiesAdminControl();
+                            usc.DataContext = new FunctiesAdminViewModel();
+                            ControlSwitch.InvokeSwitch(usc, "Functies");
+                        }
+                        else
+                        {
+                            UserControl usc = new FunctiesKlantControl();
+                            usc.DataContext = new FunctiesKlantViewModel();
+                            ControlSwitch.InvokeSwitch(usc, "Functies");
+                        }
+
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("De opgegeven mail en het wachtwoord komen niet overeen!", "foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Deze mail bestaat niet!", "foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
             }
+            
 
 
 

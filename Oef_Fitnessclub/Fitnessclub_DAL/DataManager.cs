@@ -25,6 +25,55 @@ namespace Fitnessclub_DAL
 
         }
 
+        public static List<Klant> OphalenKlanten()
+        {
+            using (FitnessclubEntities Entities = new FitnessclubEntities())
+            {
+                return Entities.Personen
+                    .OfType<Klant>()
+                    .ToList();
+            }
+
+        }
+
+        public static int VerwijderenPersoon(Persoon persoon)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+
+                    Entities.Entry(persoon).State = EntityState.Deleted;
+                    return Entities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
+            }
+        }
+
+        public static int AanpassenPersoon(Persoon persoon)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+
+                    Entities.Entry(persoon).State = EntityState.Modified;
+                    return Entities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
+            }
+        }
+
         public static Persoon OphalenKlantViaKlantMail(string email)
         {
             try
@@ -74,13 +123,15 @@ namespace Fitnessclub_DAL
 
         }
 
-        public static int ToevoegenLogoefening(Log_Oefening log_Oefening)
+        public static int ToevoegenLogoefening(Log log, Log_Oefening log_Oefening)
         {
             try
             {
                 using (FitnessclubEntities Entities = new FitnessclubEntities())
                 {
-                    Entities.Log_Workouts.Add(log_Oefening);
+                    Entities.Entry(log).State = EntityState.Added;
+                    Entities.Entry(log_Oefening).State = EntityState.Added;
+
                     return Entities.SaveChanges();
                 }
             }
@@ -126,12 +177,51 @@ namespace Fitnessclub_DAL
             using (FitnessclubEntities Entities = new FitnessclubEntities())
             {
                 return Entities.Log_Workouts
+                    .Include(x=>x.Log)
+                    .Include(x=>x.Oefening)
                     .Where(x => x.Log.KlantID == Klantid)
                     .OrderBy(x => x.LogID)
                     .ToList();
 
             }
 
+        }
+
+        public static int VerwijderenLogOefening( Log log, Log_Oefening log_Oefening)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+                    Entities.Entry(log_Oefening).State = EntityState.Deleted;
+                    Entities.Entry(log).State = EntityState.Deleted;
+                    return Entities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
+            }
+        }
+
+        public static int AanpassenLog(Log log)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+
+                    Entities.Entry(log).State = EntityState.Modified;
+                    return Entities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
+            }
         }
 
     }

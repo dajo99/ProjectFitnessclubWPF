@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\App.xaml
-10-1732034865
+11390666001
 
-24-888011800
+261841948584
 132804298961
-Components\BindablePasswordBox.xaml;UserControls\FunctiesAdminControl.xaml;UserControls\FunctiesKlantControl.xaml;UserControls\KlantenlijstControl.xaml;UserControls\LogboekControl.xaml;UserControls\LogInControl.xaml;UserControls\RegisterControl.xaml;UserControls\WelkomControl.xaml;UserControls\WorkoutsKlantControl.xaml;Views\MainView.xaml;
+Components\BindablePasswordBox.xaml;UserControls\FunctiesAdminControl.xaml;UserControls\FunctiesKlantControl.xaml;UserControls\KlantenlijstControl.xaml;UserControls\LogboekControl.xaml;UserControls\LogInControl.xaml;UserControls\RegisterControl.xaml;UserControls\TrainerToewijzenControl.xaml;UserControls\WelkomControl.xaml;UserControls\WorkoutsKlantControl.xaml;Views\MainView.xaml;
 
 False
 

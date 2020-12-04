@@ -66,5 +66,10 @@
             Visibility="{Binding GeenAccountVisibility}"/>
         </StackPanel>
         <Button Command="{Binding}" CommandParameter="Terug" VerticalAlignment="Bottom"   materialDesign:ButtonAssist.CornerRadius="5" Style="{StaticResource MaterialDesignRaisedAccentButton}" Height="36" Content="Terug" Margin="52,0,900,28"/>
+        <StackPanel HorizontalAlignment="Left" Height="100" Margin="790,412,0,0" VerticalAlignment="Top" Width="253"  Visibility="{Binding Gegevens}">
+            <Label Content="Admin Gegevens" FontWeight="Bold"/>
+            <Label Content="fitness@admin.com"/>
+            <Label Content="Campus99"/>
+        </StackPanel>
     </Grid>
 </UserControl>

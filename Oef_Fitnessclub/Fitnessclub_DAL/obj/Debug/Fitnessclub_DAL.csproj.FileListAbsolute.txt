@@ -17,3 +17,4 @@ C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.Migrations.update1.resources
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.Migrations.updateoefeningen.resources
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.Migrations.updateoefeningen1.resources
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.Migrations.updatewerkgever.resources

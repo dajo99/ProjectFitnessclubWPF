@@ -60,3 +60,5 @@ C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\KlantenlijstControl.g.cs
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\FunctiesAdminControl.baml
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\KlantenlijstControl.baml
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\TrainerToewijzenControl.g.cs
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_WPF\obj\Debug\UserControls\TrainerToewijzenControl.baml

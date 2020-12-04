@@ -10,11 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class WorkoutsKlantViewModel: BasisViewModel
+    public class WorkoutsKlantViewModel : BasisViewModel
     {
         private ObservableCollection<Oefening> _oefeningen;
         private string _selectieTrainer;
@@ -56,8 +55,8 @@ namespace Fitnessclub_WPF.ViewModel
             set { _resultaat = value; }
         }
 
-        
-        public DateTime Datum 
+
+        public DateTime Datum
         {
             get { return _datum; }
             set
@@ -66,7 +65,7 @@ namespace Fitnessclub_WPF.ViewModel
                 {
                     _datum = value;
                 }
-               
+
                 NotifyPropertyChanged();
             }
         }
@@ -92,23 +91,22 @@ namespace Fitnessclub_WPF.ViewModel
             }
         }
 
-        
+
 
         public WorkoutsKlantViewModel()
         {
-            
+
             Datum = DateTime.Today;
             List<Oefening> lijstoefeningen = DataManager.OphalenOefeningen();
             Oefeningen = new ObservableCollection<Oefening>(lijstoefeningen);
-            
+
         }
         private void Toevoegen()
         {
-            if (GeselecteerdeOefening!=null)
+            if (GeselecteerdeOefening != null)
             {
                 GekozenOefening = GeselecteerdeOefening.Naam;
                 logoefening.OefeningID = GeselecteerdeOefening.OefeningID;
-                logoefening.Oefening = GeselecteerdeOefening;
 
             }
             else
@@ -116,7 +114,7 @@ namespace Fitnessclub_WPF.ViewModel
                 MessageBox.Show("Mislukt");
             }
 
-            
+
 
         }
 
@@ -161,14 +159,14 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Terug()
         {
-            UserControl usc = new FunctiesKlantControl();
+            FunctiesKlantControl usc = new FunctiesKlantControl();
             usc.DataContext = new FunctiesKlantViewModel();
             ControlSwitch.InvokeSwitch(usc, "Functies");
         }
 
         private void Bevestigen()
         {
-            if (Datum != null && GekozenOefening != "" && Resultaat!=null)
+            if (Datum != null && GekozenOefening != "" && Resultaat != null)
             {
                 Log log = new Log();
                 log.Datum = Datum;
@@ -176,41 +174,22 @@ namespace Fitnessclub_WPF.ViewModel
                 log.TrainerNodig = trainerNodig;
                 log.Trainer = trainer;
                 log.Review = "";
-                int ok = DataManager.ToevoegenLog(log);
-                if (ok>0)
+
+                int resultaat = DataManager.ToevoegenLogoefening(log, logoefening);
+                if (resultaat > 0)
                 {
-                    MessageBox.Show("log is toegevoegd");
+                    MessageBox.Show("Log is toegevoegd!");
+                    WorkoutsKlantControl usc = new WorkoutsKlantControl();
+                    usc.DataContext = new WorkoutsKlantViewModel();
+                    ControlSwitch.InvokeSwitch(usc, "Workout");
 
-                    List<Log> lijst = DataManager.OphalenLog(User.persoon.PersoonID);
-                    int logid = 0;
-                    foreach (var item in lijst)
-                    {
-                        MessageBox.Show(item.LogID.ToString());
-                        logid = item.LogID;
-                        logoefening.Log = item;
-
-                    }
-
-                    logoefening.LogID = logid;
-                    
-
-                    int resultaat = DataManager.ToevoegenLogoefening(logoefening);
-                    if (resultaat>0)
-                    {
-                        MessageBox.Show("logoefening is tooeegevoegd");
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Fail2");
-                    }
                 }
                 else
                 {
-                    MessageBox.Show("Fail1");
+                    MessageBox.Show("Log is niet toegevoegd!");
                 }
 
-                
+
             }
         }
     }

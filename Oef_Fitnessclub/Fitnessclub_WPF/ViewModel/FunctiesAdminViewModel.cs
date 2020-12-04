@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fitnessclub_Models.UserControlHelper;
+using Fitnessclub_WPF.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +38,9 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Klantenlijst()
         {
-            throw new NotImplementedException();
+            KlantenlijstControl usc = new KlantenlijstControl();
+            usc.DataContext = new KlantenlijstViewmodel();
+            ControlSwitch.InvokeSwitch(usc, "Klantenlijst");
         }
 
         private void TrainerToewijzen()
