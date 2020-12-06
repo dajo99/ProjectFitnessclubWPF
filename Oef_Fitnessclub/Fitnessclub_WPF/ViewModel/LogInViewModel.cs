@@ -94,14 +94,15 @@ namespace Fitnessclub_WPF.ViewModel
 
         public void Inloggen()
         {
-            Persoon b;
+            Werkgever werk = null;
+            Klant klant = null;
             if (UserControlStatic.Title == "Administrator")
             {
                 Werkgever w = new Werkgever();
                 w.Email = Email;
                 w.Wachtwoord = Wachtwoord;
 
-                 b = DataManager.OphalenKlantViaKlantMail(w.Email);
+                 werk = DataManager.OphalenWerkgeverViaWerkgever(w.Email);
             }
             else
             {
@@ -109,20 +110,39 @@ namespace Fitnessclub_WPF.ViewModel
                 k.Email = Email;
                 k.Wachtwoord = Wachtwoord;
 
-                b = DataManager.OphalenKlantViaKlantMail(k.Email);
+                klant = DataManager.OphalenKlantViaKlantMail(k.Email);
             }
-            if ((b.Voornaam == "Admin" && UserControlStatic.Title == "Klant") || (b.Voornaam != "Admin" && UserControlStatic.Title == "Administrator"))
+            
+            
+            if ((Email == "fitness@admin.com" && UserControlStatic.Title == "Klant") || (Email != "fitness@admin.com" && UserControlStatic.Title == "Administrator"))
             {
                 MessageBox.Show("Verkeerde inlogpagina!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                if (b != null)
+                if (klant != null || werk != null)
                 {
+                    Persoon b = null;
+                    if (klant!= null)
+                    {
+                         b = klant;
+                    }
+                    if (werk!= null)
+                    {
+                         b = werk;
+                    }
                     string dp = SecurePassword.DecryptString(b.Wachtwoord); //deëncrypteren van database-wachtwoord van account;
                     if (Wachtwoord == dp)
                     {
-                        User.persoon = b; //nodig om account van de klant te onthouden
+                        if (klant != null)
+                        {
+                            User.persoon = klant; //nodig om account van de klant te onthouden
+                        }
+                        if (werk != null)
+                        {
+                            User.persoon = werk; //nodig om account van de klant te onthouden
+                        }
+                        
                         ControlSwitch.SetContent(b.Voornaam, "Accountnaam");
                         if (b.Profielfoto != null)
                         {

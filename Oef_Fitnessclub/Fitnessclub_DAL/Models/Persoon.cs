@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Fitnessclub_DAL.Models
 {
+    [Table("Personen")]
     public abstract class Persoon:Basisklasse 
     { 
         public int PersoonID { get; set; }
@@ -25,5 +26,10 @@ namespace Fitnessclub_DAL.Models
         public string Gemeente { get; set; }
         public string Land { get; set; }
 
+        [NotMapped]
+        public string VolledigeNaam
+        {
+            get { return this.Voornaam + " " + this.Achternaam; }
+        }
     }
 }

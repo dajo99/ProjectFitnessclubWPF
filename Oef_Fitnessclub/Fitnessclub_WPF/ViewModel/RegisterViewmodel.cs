@@ -154,15 +154,16 @@ namespace Fitnessclub_WPF.ViewModel
                 k.Wachtwoord = SecurePassword.EncryptString(k.Wachtwoord);
 
                 
-                List<Persoon> accounts = DataManager.OphalenKlantViaKlant(new Klant());
+                List<Klant> accounts = DataManager.OphalenKlantViaKlant(new Klant());
 
                 if (!accounts.Contains(k))//Kijken als er al een acocunt met deze mail in database zit
                 {
                     int ok = DataManager.ToevoegenKlant(k);
                     if (ok > 0)
                     {
-                        User.klant = k; //nodig om account van de klant te onthouden
+                        User.persoon = k; //nodig om account van de klant te onthouden
                         //main.Accountnaam.Content = k.Voornaam;
+                       
                         ControlSwitch.SetContent(k.Voornaam, "Accountnaam");
 
                         ControlSwitch.SetImage(op.FileName,"ProfileImage");

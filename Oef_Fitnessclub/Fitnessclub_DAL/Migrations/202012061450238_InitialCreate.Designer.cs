@@ -7,13 +7,13 @@ namespace Fitnessclub_DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class updatewerkgever : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updatewerkgever));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202012031751343_updatewerkgever"; }
+            get { return "202012061450238_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

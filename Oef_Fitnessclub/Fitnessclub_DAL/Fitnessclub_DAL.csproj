@@ -59,29 +59,9 @@
     <Compile Include="DataManager.cs" />
     <Compile Include="FileOperations.cs" />
     <Compile Include="FitnessclubEntities.cs" />
-    <Compile Include="Migrations\202011260135575_InitialCreate.cs" />
-    <Compile Include="Migrations\202011260135575_InitialCreate.designer.cs">
-      <DependentUpon>202011260135575_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011260148260_update.cs" />
-    <Compile Include="Migrations\202011260148260_update.designer.cs">
-      <DependentUpon>202011260148260_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011260152127_update1.cs" />
-    <Compile Include="Migrations\202011260152127_update1.designer.cs">
-      <DependentUpon>202011260152127_update1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012030157527_updateoefeningen.cs" />
-    <Compile Include="Migrations\202012030157527_updateoefeningen.designer.cs">
-      <DependentUpon>202012030157527_updateoefeningen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012030202198_updateoefeningen1.cs" />
-    <Compile Include="Migrations\202012030202198_updateoefeningen1.designer.cs">
-      <DependentUpon>202012030202198_updateoefeningen1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012031751343_updatewerkgever.cs" />
-    <Compile Include="Migrations\202012031751343_updatewerkgever.designer.cs">
-      <DependentUpon>202012031751343_updatewerkgever.cs</DependentUpon>
+    <Compile Include="Migrations\202012061450238_InitialCreate.cs" />
+    <Compile Include="Migrations\202012061450238_InitialCreate.designer.cs">
+      <DependentUpon>202012061450238_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Klant.cs" />
@@ -101,23 +81,8 @@
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011260135575_InitialCreate.resx">
-      <DependentUpon>202011260135575_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011260148260_update.resx">
-      <DependentUpon>202011260148260_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011260152127_update1.resx">
-      <DependentUpon>202011260152127_update1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012030157527_updateoefeningen.resx">
-      <DependentUpon>202012030157527_updateoefeningen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012030202198_updateoefeningen1.resx">
-      <DependentUpon>202012030202198_updateoefeningen1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012031751343_updatewerkgever.resx">
-      <DependentUpon>202012031751343_updatewerkgever.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012061450238_InitialCreate.resx">
+      <DependentUpon>202012061450238_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

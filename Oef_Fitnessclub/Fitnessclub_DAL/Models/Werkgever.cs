@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Fitnessclub_DAL.Models
 {
+    [Table("Werkgevers")]
     public class Werkgever:Persoon
     {
-        [Required]
         public int WerkgeverID { get; set; }
         public bool IsAdmin { get; set; }
 

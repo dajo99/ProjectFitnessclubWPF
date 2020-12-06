@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Fitnessclub_DAL.Models
 {
+    [Table("Trainers")]
     public class Trainer:Persoon
     {
         public int TrainerID { get; set; }

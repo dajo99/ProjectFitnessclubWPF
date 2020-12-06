@@ -11,14 +11,12 @@ namespace Fitnessclub_DAL
 {
     public class DataManager
     {
-        //----------------------
-        //Usercontrole Account
-        //----------------------
-        public static List<Persoon> OphalenKlantViaKlant(Klant klant)
+        
+        public static List<Klant> OphalenKlantViaKlant(Klant klant)
         {
             using (FitnessclubEntities Entities = new FitnessclubEntities())
             {
-                return Entities.Personen
+                return Entities.Klanten
                     .Where(x => x.Email != klant.Email)
                     .ToList();
             }
@@ -29,8 +27,17 @@ namespace Fitnessclub_DAL
         {
             using (FitnessclubEntities Entities = new FitnessclubEntities())
             {
-                return Entities.Personen
-                    .OfType<Klant>()
+                return Entities.Klanten
+                    .ToList();
+            }
+
+        }
+
+        public static List<Trainer> OphalenTrainers()
+        {
+            using (FitnessclubEntities Entities = new FitnessclubEntities())
+            {
+                return Entities.Trainers
                     .ToList();
             }
 
@@ -74,13 +81,72 @@ namespace Fitnessclub_DAL
             }
         }
 
-        public static Persoon OphalenKlantViaKlantMail(string email)
+        public static int AanpassenKlant(Klant klant)
         {
             try
             {
                 using (FitnessclubEntities Entities = new FitnessclubEntities())
                 {
-                    return Entities.Personen
+
+                    Entities.Entry(klant).State = EntityState.Modified;
+                    return Entities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
+            }
+        }
+
+        public static Klant OphalenKlantViaKlantMail(string email)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+                    return Entities.Klanten
+                        .Where(x => x.Email == email)
+                        .SingleOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return null;
+            }
+
+
+        }
+
+        public static Klant OphalenKlantViapersoonID(int id)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+                    return Entities.Klanten
+                        .Where(x => x.PersoonID == id)
+                        .SingleOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return null;
+            }
+
+
+        }
+
+        public static Werkgever OphalenWerkgeverViaWerkgever(string email)
+        {
+            try
+            {
+                using (FitnessclubEntities Entities = new FitnessclubEntities())
+                {
+                    return Entities.Werkgevers
                         .Where(x => x.Email == email)
                         .SingleOrDefault();
                 }
@@ -101,7 +167,7 @@ namespace Fitnessclub_DAL
             {
                 using (FitnessclubEntities Entities = new FitnessclubEntities())
                 {
-                    Entities.Personen.Add(klant);
+                    Entities.Klanten.Add(klant);
                     return Entities.SaveChanges();
                 }
             }
@@ -172,6 +238,22 @@ namespace Fitnessclub_DAL
 
         }
 
+        public static List<Log> OphalenLogKlantZonderTrainer()
+        {
+            using (FitnessclubEntities Entities = new FitnessclubEntities())
+            {
+                return Entities.Logs
+                    .Include(x=>x.klant)
+                    .Where(x => x.Trainer == "Nog te bepalen!")
+                    .OrderBy(x => x.Datum)
+                    .ToList();
+
+            }
+
+        }
+
+
+
         public static List<Log_Oefening> OphalenLogOefeningen(int Klantid)
         {
             using (FitnessclubEntities Entities = new FitnessclubEntities())
@@ -180,8 +262,19 @@ namespace Fitnessclub_DAL
                     .Include(x=>x.Log)
                     .Include(x=>x.Oefening)
                     .Where(x => x.Log.KlantID == Klantid)
-                    .OrderBy(x => x.LogID)
+                    .OrderBy(x => x.Log.Datum)
                     .ToList();
+
+            }
+
+        }
+        public static Log_Oefening OphalenLogOefeningViaLog(Log log)
+        {
+            using (FitnessclubEntities Entities = new FitnessclubEntities())
+            {
+                return Entities.Log_Workouts
+                    .Where(x => x.LogID == log.LogID)
+                    .SingleOrDefault();
 
             }
 

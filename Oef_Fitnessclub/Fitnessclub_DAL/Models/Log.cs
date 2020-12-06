@@ -21,7 +21,7 @@ namespace Fitnessclub_DAL.Models
         public DateTime Datum { get; set; }
 
         //navigatieproperties
-        public Klant Klant { get; set; }
+        public Klant klant { get; set; }
         public ICollection<Log_Oefening> Log_Oefeningen { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace Fitnessclub_Models
     {
         public static Persoon persoon { get; set; }
         public static Klant klant { get; set; }
-        public static Werkgever baas { get; set; }
+        public static Werkgever admin { get; set; }
     }
 }

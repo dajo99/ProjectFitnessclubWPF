@@ -45,7 +45,9 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void TrainerToewijzen()
         {
-            throw new NotImplementedException();
+            TrainerToewijzenControl usc = new TrainerToewijzenControl();
+            usc.DataContext = new TrainerToewijzenViewModel();
+            ControlSwitch.InvokeSwitch(usc, "TrainerToewijzen");
         }
     }
 }

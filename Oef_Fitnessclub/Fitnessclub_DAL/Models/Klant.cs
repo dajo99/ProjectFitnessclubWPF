@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace Fitnessclub_DAL.Models
 {
+    [Table("Klanten")]
     public class Klant:Persoon
     {
+        [Key]
         public int KlantID { get; set; }
 
         //navigatieproperties

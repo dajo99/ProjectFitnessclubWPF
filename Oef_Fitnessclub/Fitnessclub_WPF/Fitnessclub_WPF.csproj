@@ -130,6 +130,7 @@
     <Compile Include="ViewModel\LogInViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewmodel.cs" />
+    <Compile Include="ViewModel\TrainerToewijzenViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\WelkomViewModel.cs" />
     <Compile Include="ViewModel\WorkoutsKlantViewModel.cs" />
