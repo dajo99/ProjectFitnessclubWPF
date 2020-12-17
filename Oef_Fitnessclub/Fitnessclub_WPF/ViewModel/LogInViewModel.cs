@@ -1,4 +1,5 @@
 ﻿using Fitnessclub_DAL;
+using Fitnessclub_DAL.Data.UnitOfWork;
 using Fitnessclub_DAL.Models;
 using Fitnessclub_Models;
 using Fitnessclub_Models.UserControlHelper;
@@ -16,9 +17,9 @@ using System.Windows.Media.Imaging;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class LogInViewModel : BasisViewModel
+    public class LogInViewModel : BasisViewModel,IDisposable
     {
-
+        IUnitOfWork unitOfWork = new UnitOfWork(new FitnessclubEntities());
         private string _email;
         private string _wachtwoord;
         private string _melding;
@@ -102,7 +103,7 @@ namespace Fitnessclub_WPF.ViewModel
                 w.Email = Email;
                 w.Wachtwoord = Wachtwoord;
 
-                 werk = DataManager.OphalenWerkgeverViaWerkgever(w.Email);
+                werk = unitOfWork.WerkgeverRepo.Ophalen(x => x.Email == w.Email).SingleOrDefault();
             }
             else
             {
@@ -110,7 +111,7 @@ namespace Fitnessclub_WPF.ViewModel
                 k.Email = Email;
                 k.Wachtwoord = Wachtwoord;
 
-                klant = DataManager.OphalenKlantViaKlantMail(k.Email);
+                klant = unitOfWork.KlantRepo.Ophalen(x => x.Email == k.Email).SingleOrDefault();
             }
             
             
@@ -246,6 +247,11 @@ namespace Fitnessclub_WPF.ViewModel
             WelkomControl usc = new WelkomControl();
             usc.DataContext = new WelkomViewModel();
             ControlSwitch.InvokeSwitch(usc, "Welkom");
+        }
+
+        public void Dispose()
+        {
+            unitOfWork?.Dispose();
         }
     }
 }

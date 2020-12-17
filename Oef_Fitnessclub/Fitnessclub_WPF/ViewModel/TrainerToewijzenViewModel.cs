@@ -1,4 +1,5 @@
 ﻿using Fitnessclub_DAL;
+using Fitnessclub_DAL.Data.UnitOfWork;
 using Fitnessclub_DAL.Models;
 using Fitnessclub_Models;
 using Fitnessclub_Models.UserControlHelper;
@@ -13,8 +14,9 @@ using System.Windows;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class TrainerToewijzenViewModel : BasisViewModel
+    public class TrainerToewijzenViewModel : BasisViewModel,IDisposable
     {
+        IUnitOfWork unitOfWork = new UnitOfWork(new FitnessclubEntities());
         private ObservableCollection<Log> _logs;
         private Log _geselecteerdeKlant;
 
@@ -107,24 +109,26 @@ namespace Fitnessclub_WPF.ViewModel
 
         public TrainerToewijzenViewModel()
         {
-            List<Trainer> trainers = DataManager.OphalenTrainers();
+            Trainers = new ObservableCollection<Trainer>(unitOfWork.TrainerRepo.Ophalen());
+            DataRefresh();
+            
+        }
+
+        public void DataRefresh()
+        {
             List<Log> nieuw = new List<Log>();
-            List<Log> lijstKlanten = DataManager.OphalenLogKlantZonderTrainer();
+            List<Log> lijstKlanten = unitOfWork.LogRepo.Ophalen(x => x.Trainer == "Nog te bepalen!").ToList();
             foreach (var item in lijstKlanten)
             {
                 int id = item.KlantID;
-                Klant klant = DataManager.OphalenKlantViapersoonID(id);
+                Klant klant = unitOfWork.KlantRepo.Ophalen(x => x.PersoonID == id).SingleOrDefault();
                 item.klant = klant;
 
                 nieuw.Add(item);
 
             }
 
-
-
-            Trainers = new ObservableCollection<Trainer>(trainers);
             Logs = new ObservableCollection<Log>(nieuw);
-
         }
 
 
@@ -192,23 +196,12 @@ namespace Fitnessclub_WPF.ViewModel
             {
                 GeselecteerdeKlant.klant = null;
                 GeselecteerdeKlant.Trainer = GeselecteerdeTrainer.VolledigeNaam;
-                int ok = DataManager.AanpassenLog(GeselecteerdeKlant);
+                unitOfWork.LogRepo.Aanpassen(GeselecteerdeKlant);
+                int ok = unitOfWork.Save();
                 if (ok>0)
                 {
                     MessageBox.Show("Trainer is toegewezen.");
-                    List<Log> nieuw = new List<Log>();
-                    List<Log> lijstKlanten = DataManager.OphalenLogKlantZonderTrainer();
-                    foreach (var item in lijstKlanten)
-                    {
-                        int id = item.KlantID;
-                        Klant klant = DataManager.OphalenKlantViapersoonID(id);
-                        item.klant = klant;
-
-                        nieuw.Add(item);
-
-                    }
-
-                    Logs = new ObservableCollection<Log>(nieuw);
+                    DataRefresh();
                 }
                 else
                 {
@@ -219,27 +212,18 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Verwijderen()
         {
-            Log_Oefening log_Oefening = DataManager.OphalenLogOefeningViaLog(GeselecteerdeKlant);
+            Log_Oefening log_Oefening = unitOfWork.Log_OefeningRepo.Ophalen(x=>x.Log == GeselecteerdeKlant).SingleOrDefault();
             if (log_Oefening!= null)
             {
                 GeselecteerdeKlant.klant = null;
-                int ok = DataManager.VerwijderenLogOefening(GeselecteerdeKlant, log_Oefening);
+
+                unitOfWork.Log_OefeningRepo.Verwijderen(log_Oefening);
+                unitOfWork.LogRepo.Verwijderen(GeselecteerdeKlant);
+                int ok = unitOfWork.Save();
                 if (ok>0)
                 {
                     MessageBox.Show("Log is verwijderd!");
-                    List<Log> nieuw = new List<Log>();
-                    List<Log> lijstKlanten = DataManager.OphalenLogKlantZonderTrainer();
-                    foreach (var item in lijstKlanten)
-                    {
-                        int id = item.KlantID;
-                        Klant klant = DataManager.OphalenKlantViapersoonID(id);
-                        item.klant = klant;
-
-                        nieuw.Add(item);
-
-                    }
-
-                    Logs = new ObservableCollection<Log>(nieuw);
+                    DataRefresh();
                 }
                 else
                 {
@@ -257,6 +241,11 @@ namespace Fitnessclub_WPF.ViewModel
             FunctiesAdminControl usc = new FunctiesAdminControl();
             usc.DataContext = new FunctiesAdminViewModel();
             ControlSwitch.InvokeSwitch(usc, "Functies");
+        }
+
+        public void Dispose()
+        {
+            unitOfWork?.Dispose();
         }
 
 

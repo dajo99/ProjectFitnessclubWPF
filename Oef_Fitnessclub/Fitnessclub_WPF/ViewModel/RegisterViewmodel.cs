@@ -1,4 +1,5 @@
 ﻿using Fitnessclub_DAL;
+using Fitnessclub_DAL.Data.UnitOfWork;
 using Fitnessclub_DAL.Models;
 using Fitnessclub_Models;
 using Fitnessclub_Models.UserControlHelper;
@@ -17,9 +18,9 @@ using System.Windows.Media.Imaging;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class RegisterViewmodel : BasisViewModel
+    public class RegisterViewmodel : BasisViewModel,IDisposable
     {
-        MainView main = (MainView)App.Current.MainWindow;
+        IUnitOfWork unitOfWork = new UnitOfWork(new FitnessclubEntities());
 
         private string _voornaam;
         private string _achternaam;
@@ -153,12 +154,13 @@ namespace Fitnessclub_WPF.ViewModel
                 //wachtwoord encrypteren 
                 k.Wachtwoord = SecurePassword.EncryptString(k.Wachtwoord);
 
-                
-                List<Klant> accounts = DataManager.OphalenKlantViaKlant(new Klant());
 
+                List<Klant> accounts = unitOfWork.KlantRepo.Ophalen(x => x.Email == k.Email).ToList();
+                
                 if (!accounts.Contains(k))//Kijken als er al een acocunt met deze mail in database zit
                 {
-                    int ok = DataManager.ToevoegenKlant(k);
+                    unitOfWork.KlantRepo.Toevoegen(k);
+                    int ok = unitOfWork.Save();
                     if (ok > 0)
                     {
                         User.persoon = k; //nodig om account van de klant te onthouden
@@ -264,6 +266,11 @@ namespace Fitnessclub_WPF.ViewModel
             }
         }
 
-        
+        public void Dispose()
+        {
+            unitOfWork?.Dispose();
+        }
+
+
     }
 }

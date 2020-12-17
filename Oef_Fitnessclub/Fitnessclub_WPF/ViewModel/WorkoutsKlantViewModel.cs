@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class WorkoutsKlantViewModel : BasisViewModel
+    public class WorkoutsKlantViewModel : BasisViewModel,IDisposable
     {
         private ObservableCollection<Oefening> _oefeningen;
         private string _selectieTrainer;
@@ -191,6 +191,11 @@ namespace Fitnessclub_WPF.ViewModel
 
 
             }
+        }
+
+        public void Dispose()
+        {
+            unitOfWork?.Dispose();
         }
     }
 }

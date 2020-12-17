@@ -1,4 +1,5 @@
 ﻿using Fitnessclub_DAL;
+using Fitnessclub_DAL.Data.UnitOfWork;
 using Fitnessclub_DAL.Models;
 using Fitnessclub_Models;
 using Fitnessclub_Models.UserControlHelper;
@@ -13,8 +14,9 @@ using System.Windows;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class LogboekViewModel : BasisViewModel
+    public class LogboekViewModel : BasisViewModel, IDisposable
     {
+        IUnitOfWork unitOfWork = new UnitOfWork(new FitnessclubEntities());
         private Log _logRecord;
         private ObservableCollection<Log_Oefening> _logoefeningen;
         private Log_Oefening _geselecteerdeLogOefening;
@@ -56,6 +58,8 @@ namespace Fitnessclub_WPF.ViewModel
         {
             List<Log_Oefening> lijst = DataManager.OphalenLogOefeningen(User.persoon.PersoonID);
             LogOefeningen = new ObservableCollection<Log_Oefening>(lijst);
+
+            LogOefeningen = new ObservableCollection<Log_Oefening>(unitOfWork.Log_OefeningRepo.Ophalen(x => x.));
 
         }
 
@@ -155,6 +159,11 @@ namespace Fitnessclub_WPF.ViewModel
                 LogRecord = GeselecteerdeLogOefening.Log;
             }
 
+        }
+
+        public void Dispose()
+        {
+            unitOfWork?.Dispose();
         }
     }
 }
