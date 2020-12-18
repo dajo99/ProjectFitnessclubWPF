@@ -56,10 +56,8 @@ namespace Fitnessclub_WPF.ViewModel
 
         public LogboekViewModel()
         {
-            List<Log_Oefening> lijst = DataManager.OphalenLogOefeningen(User.persoon.PersoonID);
-            LogOefeningen = new ObservableCollection<Log_Oefening>(lijst);
-
-            LogOefeningen = new ObservableCollection<Log_Oefening>(unitOfWork.Log_OefeningRepo.Ophalen(x => x.));
+            LogOefeningen = new ObservableCollection<Log_Oefening>(unitOfWork.Log_OefeningRepo.Ophalen(x=>x.Log.KlantID == User.persoon.PersoonID, includes: "Log,Oefening" ));
+            
 
         }
 
@@ -94,12 +92,14 @@ namespace Fitnessclub_WPF.ViewModel
 
             if (LogRecord != null)
             {
-
-                int ok = DataManager.AanpassenLog(LogRecord);
+                unitOfWork.LogRepo.Aanpassen(LogRecord);
+                int ok = unitOfWork.Save();
                 if (ok > 0)
+
+
                 {
-                    List<Log_Oefening> lijst = DataManager.OphalenLogOefeningen(User.persoon.PersoonID);
-                    LogOefeningen = new ObservableCollection<Log_Oefening>(lijst);
+                    LogOefeningen = new ObservableCollection<Log_Oefening>(unitOfWork.Log_OefeningRepo.Ophalen(x => x.Log.KlantID == User.persoon.PersoonID, includes: "Log,Oefening"));
+
                     Wissen();
                 }
                 else
@@ -120,12 +120,13 @@ namespace Fitnessclub_WPF.ViewModel
         {
             if (GeselecteerdeLogOefening != null)
             {
-
-                int ok = DataManager.VerwijderenLogOefening(GeselecteerdeLogOefening.Log, GeselecteerdeLogOefening);
+                unitOfWork.Log_OefeningRepo.Verwijderen(GeselecteerdeLogOefening);
+                unitOfWork.LogRepo.Verwijderen(GeselecteerdeLogOefening.Log);
+                int ok = unitOfWork.Save();
                 if (ok > 0)
                 {
-                    List<Log_Oefening> lijst = DataManager.OphalenLogOefeningen(User.persoon.PersoonID);
-                    LogOefeningen = new ObservableCollection<Log_Oefening>(lijst);
+
+                    LogOefeningen = new ObservableCollection<Log_Oefening>(unitOfWork.Log_OefeningRepo.Ophalen(x => x.Log.KlantID == User.persoon.PersoonID, includes: "Log,Oefening"));
                     Wissen();
                 }
                 else

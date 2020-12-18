@@ -128,6 +128,7 @@ namespace Fitnessclub_WPF.ViewModel
 
             }
 
+
             Logs = new ObservableCollection<Log>(nieuw);
         }
 

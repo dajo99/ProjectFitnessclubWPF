@@ -38,12 +38,12 @@ namespace Fitnessclub_DAL.Data.Repositories
         //uitbreiding
 
         public IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden,
-           params Expression<Func<T, object>>[] includes)
+           string includes="")
         {
             IQueryable<T> query = Context.Set<T>();
             if (includes != null)
             {
-                foreach (var item in includes)
+                foreach (var item in includes.Split(new char[] {','} , StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(item);
                 }
@@ -59,7 +59,7 @@ namespace Fitnessclub_DAL.Data.Repositories
             return Ophalen(voorwaarden, null).ToList();
         }
 
-        public IEnumerable<T> Ophalen(params Expression<Func<T, object>>[] includes)
+        public IEnumerable<T> Ophalen(string includes)
         {
             return Ophalen(null, includes).ToList();
         }

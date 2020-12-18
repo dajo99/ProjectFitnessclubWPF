@@ -19,9 +19,9 @@ namespace Fitnessclub_DAL.Data.Repositories
 
         //uitbreiding
         IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden);
-        IEnumerable<T> Ophalen(params Expression<Func<T, object>>[] includes);
+        IEnumerable<T> Ophalen(string includes);
         IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden,
-            params Expression<Func<T, object>>[] includes);
+            string includes);
 
 
         //handige functies
