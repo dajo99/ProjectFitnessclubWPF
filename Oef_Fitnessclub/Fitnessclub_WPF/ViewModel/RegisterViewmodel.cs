@@ -18,7 +18,7 @@ using System.Windows.Media.Imaging;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class RegisterViewmodel : BasisViewModel,IDisposable
+    public class RegisterViewmodel : BasisViewModel, IDisposable
     {
         IUnitOfWork unitOfWork = new UnitOfWork(new FitnessclubEntities());
 
@@ -31,7 +31,8 @@ namespace Fitnessclub_WPF.ViewModel
         private string _wachtwoord;
         private string _email;
         private ImageSource _profielfoto;
-        
+
+
 
         public string Email
         {
@@ -128,77 +129,85 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Registreren()
         {
-            //nieuw klantaccount aanmaken en invoergegevens erin zetten
-            Klant k = new Klant();
-            k.Voornaam = Voornaam;
-            k.Achternaam = Achternaam;
-            k.Wachtwoord = Wachtwoord;
-            k.Adres = Adres;
-            k.Gemeente = Gemeente;
-            k.Postcode = Postcode;
-            k.Land = Land;
-            k.Email = Email;
-            
-
-            if (Profielfoto != null)
+            if (Email != null && Wachtwoord!=null && Wachtwoord.Length >= 4)
             {
-                //Het datatype in de database is varbinary dus de string moet eerst omgezet worden.
-                k.Profielfoto = Encoding.ASCII.GetBytes(op.FileName);
-            }
+                //nieuw klantaccount aanmaken en invoergegevens erin zetten
+                Klant k = new Klant();
+                k.Voornaam = Voornaam;
+                k.Achternaam = Achternaam;
+                k.Wachtwoord = Wachtwoord;
+                k.Adres = Adres;
+                k.Gemeente = Gemeente;
+                k.Postcode = Postcode;
+                k.Land = Land;
+                k.Email = Email;
 
 
-            if (k.IsGeldig())
-            {
-
-
-                //wachtwoord encrypteren 
-                k.Wachtwoord = SecurePassword.EncryptString(k.Wachtwoord);
-
-
-                List<Klant> accounts = unitOfWork.KlantRepo.Ophalen(x => x.Email == k.Email).ToList();
-                
-                if (!accounts.Contains(k))//Kijken als er al een acocunt met deze mail in database zit
+                if (Profielfoto != null)
                 {
-                    unitOfWork.KlantRepo.Toevoegen(k);
-                    int ok = unitOfWork.Save();
-                    if (ok > 0)
+                    //Het datatype in de database is varbinary dus de string moet eerst omgezet worden.
+                    k.Profielfoto = Encoding.ASCII.GetBytes(op.FileName);
+                }
+
+
+                if (k.IsGeldig())
+                {
+
+
+                    //wachtwoord encrypteren 
+                    k.Wachtwoord = SecurePassword.EncryptString(k.Wachtwoord);
+
+
+                    List<Klant> accounts = unitOfWork.KlantRepo.Ophalen(x => x.Email == k.Email).ToList();
+
+                    if (!accounts.Contains(k))//Kijken als er al een acocunt met deze mail in database zit
                     {
-                        User.persoon = k; //nodig om account van de klant te onthouden
-                        //main.Accountnaam.Content = k.Voornaam;
-                       
-                        ControlSwitch.SetContent(k.Voornaam, "Accountnaam");
+                        unitOfWork.KlantRepo.Toevoegen(k);
+                        int ok = unitOfWork.Save();
+                        if (ok > 0)
+                        {
+                            User.persoon = k; //nodig om account van de klant te onthouden
+                                              //main.Accountnaam.Content = k.Voornaam;
 
-                        ControlSwitch.SetImage(op.FileName,"ProfileImage");
+                            ControlSwitch.SetContent(k.Voornaam, "Accountnaam");
 
-                        //main.Welkom.Visibility = Visibility.Hidden;
-                        ControlSwitch.ChangePropertyVisibility("Hidden", "Welkom");
-                        //main.AccountPanel.Visibility = Visibility.Visible;
-                        ControlSwitch.ChangePropertyVisibility("Visible", "AccountPanel");
+                            ControlSwitch.SetImage(op.FileName, "ProfileImage");
+
+                            //main.Welkom.Visibility = Visibility.Hidden;
+                            ControlSwitch.ChangePropertyVisibility("Hidden", "Welkom");
+                            //main.AccountPanel.Visibility = Visibility.Visible;
+                            ControlSwitch.ChangePropertyVisibility("Visible", "AccountPanel");
 
 
 
-                        //Nieuwe usercontrol oproepen
+                            //Nieuwe usercontrol oproepen
 
-                        UserControl usc = new FunctiesKlantControl();
-                        usc.DataContext = new FunctiesKlantViewModel();
-                        ControlSwitch.InvokeSwitch(usc, "Functies");
+                            UserControl usc = new FunctiesKlantControl();
+                            usc.DataContext = new FunctiesKlantViewModel();
+                            ControlSwitch.InvokeSwitch(usc, "Functies");
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("Account is niet toegevoegd!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Account is niet toegevoegd!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Deze email is al in gebruik!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+
                 }
                 else
                 {
-                    MessageBox.Show("Deze email is al in gebruik!", "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(k.Error, "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-
             }
             else
             {
-                MessageBox.Show(k.Error, "Foutmelding", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Vul verplichte velden in!","Foutmelding");
             }
+            
         }
 
         //Deze klasse opent een nieuw dialoogvenster om afbeeldingen te uploaden
@@ -234,15 +243,22 @@ namespace Fitnessclub_WPF.ViewModel
         {
             get
             {
-                if (columnName == "Email" && string.IsNullOrWhiteSpace(Email))
+                if ("Email" == columnName && Email == null || Email == "")
                 {
-                    return "Vul een geldig emailadres in!";
+                    return "* Verplicht veld";
                 }
-                else if (columnName == "Wachtwoord" && string.IsNullOrWhiteSpace(Email))
+                else if ("Wachtwoord" == columnName && Wachtwoord == null || Wachtwoord == "")
                 {
-                    return "Vul een wachtwoord in om aan te melden!";
+                    return "* Verplicht veld";
                 }
-
+                else if (Email != null && columnName == "Email" && !Email.Contains("@"))
+                {
+                    return "Vul een correct email adress in";
+                }
+                else if (Wachtwoord != null && columnName == "Wachtwoord" && Wachtwoord.Length < 4)
+                {
+                    return "Vul een correct wachtwoord in van minimum 4 karakters";
+                }
                 return "";
             }
         }
@@ -259,7 +275,7 @@ namespace Fitnessclub_WPF.ViewModel
         {
             switch (parameter.ToString())
             {
-                case "Uploaden":Uploaden(); break;
+                case "Uploaden": Uploaden(); break;
                 case "Registreren": Registreren(); break;
                 case "Terug": Terug(); break;
 

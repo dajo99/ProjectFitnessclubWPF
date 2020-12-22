@@ -24,13 +24,19 @@ namespace Fitnessclub_WPF.ViewModel
         private string _wachtwoord;
         private string _melding;
         private string _geenAccountVisibility;
-        private string _gegevens;
+        private string _gegevensAdmin;
+        private string _gegevensKlant;
         private string _windowTitle;
 
-        public string Gegevens
+        public string GegevensAdmin
         {
-            get { return _gegevens; }
-            set { _gegevens = value; }
+            get { return _gegevensAdmin; }
+            set { _gegevensAdmin = value; }
+        }
+        public string GegevensKlant
+        {
+            get { return _gegevensKlant; }
+            set { _gegevensKlant = value; }
         }
         public string WindowTitle
         {
@@ -81,12 +87,14 @@ namespace Fitnessclub_WPF.ViewModel
             {
                 WindowTitle = "Administrator";
                 GeenAccountVisibility = "Hidden";
-                Gegevens = "Visible";
+                GegevensAdmin = "Visible";
+                GegevensKlant = "Hidden";
             }
             else
             {
                 WindowTitle = "Klant";
-                Gegevens = "Hidden";
+                GegevensAdmin = "Hidden";
+                GegevensKlant = "Visible";
             }
 
         }
@@ -147,6 +155,7 @@ namespace Fitnessclub_WPF.ViewModel
                         ControlSwitch.SetContent(b.Voornaam, "Accountnaam");
                         if (b.Profielfoto != null)
                         {
+
                             string profielImage = Encoding.ASCII.GetString(b.Profielfoto);
 
                             //main.ProfileImage.Source = new BitmapImage(new Uri(profielImage));

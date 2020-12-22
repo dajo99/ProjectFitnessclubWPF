@@ -17,8 +17,8 @@ namespace Fitnessclub_WPF.ViewModel
     public class TrainerToewijzenViewModel : BasisViewModel,IDisposable
     {
         IUnitOfWork unitOfWork = new UnitOfWork(new FitnessclubEntities());
-        private ObservableCollection<Log> _logs;
-        private Log _geselecteerdeKlant;
+        private ObservableCollection<Log_Oefening> _logs;
+        private Log_Oefening _geselecteerdeLog;
 
         public string _klant;
         public string _trainer;
@@ -62,7 +62,7 @@ namespace Fitnessclub_WPF.ViewModel
 
 
 
-        public ObservableCollection<Log> Logs
+        public ObservableCollection<Log_Oefening> Logs
         {
             get { return _logs; }
             set
@@ -73,12 +73,12 @@ namespace Fitnessclub_WPF.ViewModel
         }
 
 
-        public Log GeselecteerdeKlant
+        public Log_Oefening GeselecteerdeLog
         {
-            get { return _geselecteerdeKlant; }
+            get { return _geselecteerdeLog; }
             set
             {
-                _geselecteerdeKlant = value;
+                _geselecteerdeLog = value;
                 SelectieKlant();
                 SelectieDatum();
                 NotifyPropertyChanged();
@@ -116,28 +116,28 @@ namespace Fitnessclub_WPF.ViewModel
 
         public void DataRefresh()
         {
-            List<Log> nieuw = new List<Log>();
-            List<Log> lijstKlanten = unitOfWork.LogRepo.Ophalen(x => x.Trainer == "Nog te bepalen!").ToList();
+            List<Log_Oefening> nieuw = new List<Log_Oefening>();
+            List<Log_Oefening> lijstKlanten = unitOfWork.Log_OefeningRepo.Ophalen(x => x.Log.Trainer == "Nog te bepalen!", includes: "Log,Oefening").ToList();
             foreach (var item in lijstKlanten)
             {
-                int id = item.KlantID;
+                int id = item.Log.KlantID;
                 Klant klant = unitOfWork.KlantRepo.Ophalen(x => x.PersoonID == id).SingleOrDefault();
-                item.klant = klant;
+                item.Log.klant = klant;
 
                 nieuw.Add(item);
 
             }
 
 
-            Logs = new ObservableCollection<Log>(nieuw);
+            Logs = new ObservableCollection<Log_Oefening>(nieuw);
         }
 
 
         private void SelectieKlant()
         {
-            if (GeselecteerdeKlant != null)
+            if (GeselecteerdeLog != null)
             {
-                Klant = "Klant: " + GeselecteerdeKlant.klant.VolledigeNaam;
+                Klant = "Klant: " + GeselecteerdeLog.Log.klant.VolledigeNaam;
             }
             
         }
@@ -154,9 +154,9 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void SelectieDatum()
         {
-            if (GeselecteerdeKlant != null)
+            if (GeselecteerdeLog != null)
             {
-                Tijdstip = "Datum: " + GeselecteerdeKlant.Datum.ToString("dd/MM/yyyy");
+                Tijdstip = "Datum: " + GeselecteerdeLog.Log.Datum.ToString("dd/MM/yyyy");
             }
 
         }
@@ -193,11 +193,11 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Bevestigen()
         {
-            if (GeselecteerdeKlant!= null && GeselecteerdeTrainer!=null)
+            if (GeselecteerdeLog!= null && GeselecteerdeTrainer!=null)
             {
-                GeselecteerdeKlant.klant = null;
-                GeselecteerdeKlant.Trainer = GeselecteerdeTrainer.VolledigeNaam;
-                unitOfWork.LogRepo.Aanpassen(GeselecteerdeKlant);
+                GeselecteerdeLog.Log.klant = null;
+                GeselecteerdeLog.Log.Trainer = GeselecteerdeTrainer.VolledigeNaam;
+                unitOfWork.LogRepo.Aanpassen(GeselecteerdeLog.Log);
                 int ok = unitOfWork.Save();
                 if (ok>0)
                 {
@@ -213,13 +213,13 @@ namespace Fitnessclub_WPF.ViewModel
 
         private void Verwijderen()
         {
-            Log_Oefening log_Oefening = unitOfWork.Log_OefeningRepo.Ophalen(x=>x.Log == GeselecteerdeKlant).SingleOrDefault();
-            if (log_Oefening!= null)
+            if (GeselecteerdeLog!= null)
             {
-                GeselecteerdeKlant.klant = null;
+                GeselecteerdeLog.Log.klant = null;
 
-                unitOfWork.Log_OefeningRepo.Verwijderen(log_Oefening);
-                unitOfWork.LogRepo.Verwijderen(GeselecteerdeKlant);
+                unitOfWork.LogRepo.Verwijderen(GeselecteerdeLog.Log);
+                unitOfWork.Log_OefeningRepo.Verwijderen(GeselecteerdeLog);
+                
                 int ok = unitOfWork.Save();
                 if (ok>0)
                 {

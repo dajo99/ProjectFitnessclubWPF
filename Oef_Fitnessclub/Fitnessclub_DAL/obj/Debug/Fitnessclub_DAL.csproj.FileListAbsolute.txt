@@ -12,3 +12,4 @@ C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.csproj.CopyComplete
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.dll
 C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.pdb
+C:\Users\alain\Desktop\ProjectFitnessclubWPF\Oef_Fitnessclub\Fitnessclub_DAL\obj\Debug\Fitnessclub_DAL.csprojAssemblyReference.cache

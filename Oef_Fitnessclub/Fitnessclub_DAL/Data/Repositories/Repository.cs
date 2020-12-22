@@ -52,6 +52,7 @@ namespace Fitnessclub_DAL.Data.Repositories
             {
                 query = query.Where(voorwaarden);
             }
+            
             return query.ToList();
         }
         public IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden)

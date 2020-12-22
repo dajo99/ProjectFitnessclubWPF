@@ -120,8 +120,9 @@ namespace Fitnessclub_WPF.ViewModel
         {
             if (GeselecteerdeLogOefening != null)
             {
-                unitOfWork.Log_OefeningRepo.Verwijderen(GeselecteerdeLogOefening);
                 unitOfWork.LogRepo.Verwijderen(GeselecteerdeLogOefening.Log);
+                unitOfWork.Log_OefeningRepo.Verwijderen(GeselecteerdeLogOefening);
+                
                 int ok = unitOfWork.Save();
                 if (ok > 0)
                 {
