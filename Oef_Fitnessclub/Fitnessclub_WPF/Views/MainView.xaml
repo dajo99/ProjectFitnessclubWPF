@@ -1,0 +1,51 @@
+﻿<Window x:Class="Fitnessclub_WPF.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fitnessclub_WPF.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background= "Beige"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Title="MainView" Height="600" Width="1080" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <Grid x:Name="GridMainWindow">
+        <Grid x:Name="GridNav" Height="60" VerticalAlignment="Top"  Background="#D8B86C">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="13*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC"/>
+            </Grid.Effect>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Visibility="{Binding AccountPanel}" Grid.Column="0">
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignLeftEdges" HorizontalAlignment="Left" StaysOpen="False" Margin="10">
+                    <StackPanel Width="150">
+                        <Button  Content="Account"/>
+                        <Separator/>
+                        <Button  Content="Logout" Command="{Binding}" CommandParameter="Logout"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <materialDesign:Chip Content="{Binding Accountnaam}"  HorizontalAlignment="Right" Margin="0,14">
+                    <materialDesign:Chip.Icon>
+                        <Image Source="{Binding ProfileImage}"/>
+                    </materialDesign:Chip.Icon>
+                </materialDesign:Chip>
+            </StackPanel>
+            <Label Content="Welkom" FontSize="30" FontWeight="Bold" Margin="30 10 0 0" Grid.Column="0" Visibility="{Binding Welkom}"/>
+            <Button Command="{Binding}" CommandParameter="Afsluiten" Content="Afsluiten" Width="150" VerticalAlignment="Center" Style="{StaticResource MaterialDesignRaisedAccentButton}"  materialDesign:ButtonAssist.CornerRadius="5" Height="30" Grid.Column="1" Grid.ColumnSpan="2" />
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" VerticalAlignment="Center" FontSize="22" Height="36" Grid.Column="0" Margin="463,15,160,9">Fitnessclub</Button>
+        </Grid>
+        
+        <!--usercontrol grid-->
+        <ContentControl Content="{Binding Control}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1080">
+
+        </ContentControl>
+    </Grid>
+</Window>
