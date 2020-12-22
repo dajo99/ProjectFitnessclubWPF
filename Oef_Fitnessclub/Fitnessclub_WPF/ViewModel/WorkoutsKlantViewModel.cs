@@ -1,4 +1,5 @@
 ﻿using Fitnessclub_DAL;
+using Fitnessclub_DAL.Data.UnitOfWork;
 using Fitnessclub_DAL.Models;
 using Fitnessclub_Models;
 using Fitnessclub_Models.UserControlHelper;
@@ -13,8 +14,9 @@ using System.Windows;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class WorkoutsKlantViewModel : BasisViewModel
+    public class WorkoutsKlantViewModel : BasisViewModel,IDisposable
     {
+        IUnitOfWork unitOfWork = new UnitOfWork(new FitnessclubEntities());
         private ObservableCollection<Oefening> _oefeningen;
         private string _selectieTrainer;
         private string _gekozenOefening;
@@ -97,8 +99,7 @@ namespace Fitnessclub_WPF.ViewModel
         {
 
             Datum = DateTime.Today;
-            List<Oefening> lijstoefeningen = DataManager.OphalenOefeningen();
-            Oefeningen = new ObservableCollection<Oefening>(lijstoefeningen);
+            Oefeningen = new ObservableCollection<Oefening>(unitOfWork.OefeningRepo.Ophalen());
 
         }
         private void Toevoegen()
@@ -174,9 +175,10 @@ namespace Fitnessclub_WPF.ViewModel
                 log.TrainerNodig = trainerNodig;
                 log.Trainer = trainer;
                 log.Review = "";
-
-                int resultaat = DataManager.ToevoegenLogoefening(log, logoefening);
-                if (resultaat > 0)
+                unitOfWork.LogRepo.Toevoegen(log);
+                unitOfWork.Log_OefeningRepo.Toevoegen(logoefening);
+                int ok = unitOfWork.Save();
+                if (ok> 0)
                 {
                     MessageBox.Show("Log is toegevoegd!");
                     WorkoutsKlantControl usc = new WorkoutsKlantControl();
@@ -191,6 +193,11 @@ namespace Fitnessclub_WPF.ViewModel
 
 
             }
+        }
+
+        public void Dispose()
+        {
+            unitOfWork?.Dispose();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Fitnessclub_DAL;
+using Fitnessclub_DAL.Data.UnitOfWork;
 using Fitnessclub_DAL.Models;
 using Fitnessclub_Models.UserControlHelper;
 using Fitnessclub_WPF.UserControls;
@@ -12,10 +13,11 @@ using System.Windows;
 
 namespace Fitnessclub_WPF.ViewModel
 {
-    public class KlantenlijstViewmodel:BasisViewModel
+    public class KlantenlijstViewmodel:BasisViewModel, IDisposable
     {
+        IUnitOfWork unitOfWork = new UnitOfWork((new FitnessclubEntities()));
         private ObservableCollection<Klant> _klanten;
-        private Persoon _geselecteerdeKlant;
+        private Klant _geselecteerdeKlant;
 
 
         public ObservableCollection<Klant> Klanten
@@ -28,7 +30,7 @@ namespace Fitnessclub_WPF.ViewModel
             }
         }
 
-        public Persoon GeselecteerdeKlant
+        public Klant GeselecteerdeKlant
         {
             get { return _geselecteerdeKlant; }
             set
@@ -42,8 +44,7 @@ namespace Fitnessclub_WPF.ViewModel
 
         public KlantenlijstViewmodel()
         {
-            List<Klant> lijstklanten = DataManager.OphalenKlanten();
-            Klanten = new ObservableCollection<Klant>(lijstklanten);
+            Klanten = new ObservableCollection<Klant>(unitOfWork.KlantRepo.Ophalen());
         }
 
         public override string this[string columnName] => throw new NotImplementedException();
@@ -80,11 +81,11 @@ namespace Fitnessclub_WPF.ViewModel
                 {
 
 
-                    int ok = DataManager.AanpassenPersoon(GeselecteerdeKlant);
+                    unitOfWork.KlantRepo.Aanpassen(GeselecteerdeKlant);
+                    int ok = unitOfWork.Save();
                     if (ok > 0)
                     {
-                        List<Klant> lijstklanten = DataManager.OphalenKlanten();
-                        Klanten = new ObservableCollection<Klant>(lijstklanten);
+                        Klanten = new ObservableCollection<Klant>(unitOfWork.KlantRepo.Ophalen());
                         GeselecteerdeKlant = null;
                     }
                     else
@@ -105,11 +106,11 @@ namespace Fitnessclub_WPF.ViewModel
         {
             if (GeselecteerdeKlant != null)
             {
-                int ok = DataManager.VerwijderenPersoon(GeselecteerdeKlant);
+                unitOfWork.KlantRepo.Verwijderen(GeselecteerdeKlant);
+                int ok = unitOfWork.Save();
                 if (ok > 0)
                 {
-                    List<Klant> lijstklanten = DataManager.OphalenKlanten();
-                    Klanten = new ObservableCollection<Klant>(lijstklanten);
+                    Klanten = new ObservableCollection<Klant>(unitOfWork.KlantRepo.Ophalen());
                     GeselecteerdeKlant = null;
                 }
                 else
@@ -130,8 +131,11 @@ namespace Fitnessclub_WPF.ViewModel
             ControlSwitch.InvokeSwitch(usc, "Functies");
         }
 
-       
 
-        
+        public void Dispose()
+        {
+            unitOfWork?.Dispose();
+        }
+
     }
 }

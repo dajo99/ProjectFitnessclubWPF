@@ -31,12 +31,12 @@
             <StackPanel Grid.Row="1" Grid.Column="0" >
 
             <Label Content="Klanten die trainer zoeken" FontSize="20" Margin="75 20 0 0" FontWeight="Bold"/>
-            <ListView ItemsSource="{Binding Logs}" SelectedItem="{Binding GeselecteerdeKlant}" Width="280" Height="200" Margin="75 10 0 0" BorderBrush="Black" BorderThickness="1">
+            <ListView ItemsSource="{Binding Logs}" SelectedItem="{Binding GeselecteerdeLog}" Width="280" Height="200" Margin="75 10 0 0" BorderBrush="Black" BorderThickness="1">
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
-                            <GridViewColumn Header="Naam" DisplayMemberBinding="{Binding klant.VolledigeNaam}" />
-                            <GridViewColumn Header="Datum" DisplayMemberBinding="{Binding Datum, StringFormat=dd-MM-yyyy}" />
+                            <GridViewColumn Header="Naam" DisplayMemberBinding="{Binding Log.klant.VolledigeNaam}" />
+                            <GridViewColumn Header="Datum" DisplayMemberBinding="{Binding Log.Datum, StringFormat=dd-MM-yyyy}" />
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>
