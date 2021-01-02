@@ -175,21 +175,31 @@ namespace Fitnessclub_WPF.ViewModel
                 log.TrainerNodig = trainerNodig;
                 log.Trainer = trainer;
                 log.Review = "";
-                unitOfWork.LogRepo.Toevoegen(log);
-                unitOfWork.Log_OefeningRepo.Toevoegen(logoefening);
-                int ok = unitOfWork.Save();
-                if (ok> 0)
+                if (GeselecteerdeOefening != null)
                 {
-                    MessageBox.Show("Log is toegevoegd!");
-                    WorkoutsKlantControl usc = new WorkoutsKlantControl();
-                    usc.DataContext = new WorkoutsKlantViewModel();
-                    ControlSwitch.InvokeSwitch(usc, "Workout");
+                    unitOfWork.LogRepo.Toevoegen(log);
+                    unitOfWork.Log_OefeningRepo.Toevoegen(logoefening);
 
+                    int ok = unitOfWork.Save();
+                    if (ok > 0)
+                    {
+                        MessageBox.Show("Log is toegevoegd!");
+                        WorkoutsKlantControl usc = new WorkoutsKlantControl();
+                        usc.DataContext = new WorkoutsKlantViewModel();
+                        ControlSwitch.InvokeSwitch(usc, "Workout");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Log is niet toegevoegd!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Log is niet toegevoegd!");
+                    MessageBox.Show("Selecteer een oefening", "Foutmelding");
                 }
+                
+               
 
 
             }
