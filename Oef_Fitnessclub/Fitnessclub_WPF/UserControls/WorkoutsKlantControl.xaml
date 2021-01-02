@@ -33,7 +33,7 @@
             <DatePicker materialDesign:HintAssist.Hint="Kies een datum" Margin="75 40 215 20" SelectedDate="{Binding Datum}" IsTodayHighlighted="True" DisplayDateStart="{x:Static sys:DateTime.Today}"/>
             <ListBox ItemsSource="{Binding Oefeningen}" DisplayMemberPath="Naam" SelectedItem="{Binding GeselecteerdeOefening}" Width="250" Height="170" Margin="0 20 140 0" BorderBrush="Black" BorderThickness="1" materialDesign:ShadowAssist.ShadowDepth="Depth3"/>
             <ComboBox materialDesign:HintAssist.Hint="Trainer nodig?" Margin="75 20 215 0" SelectedIndex="{Binding SelectieTrainer}">
-                <ComboBoxItem Content="Nee"></ComboBoxItem>
+                <ComboBoxItem IsSelected="True" Content="Nee"></ComboBoxItem>
                 <ComboBoxItem Content="Ja"></ComboBoxItem>
             </ComboBox>
 
