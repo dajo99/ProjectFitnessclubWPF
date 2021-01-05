@@ -105,6 +105,7 @@ namespace Fitnessclub_WPF.ViewModel
         {
             Werkgever werk = null;
             Klant klant = null;
+            //Hier wordt gecontroleert welke rol een user heeft.
             if (UserControlStatic.Title == "Administrator")
             {
                 Werkgever w = new Werkgever();
@@ -129,6 +130,7 @@ namespace Fitnessclub_WPF.ViewModel
             }
             else
             {
+                //Hier wordt gecontroleert of de login wel geldig is.
                 if (klant != null || werk != null)
                 {
                     Persoon b = null;

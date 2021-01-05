@@ -56,6 +56,7 @@ namespace Fitnessclub_WPF.ViewModel
 
         public LogboekViewModel()
         {
+            //De manier om includes toe te voegen doe heb ik veranderd naar een string.
             LogOefeningen = new ObservableCollection<Log_Oefening>(unitOfWork.Log_OefeningRepo.Ophalen(x=>x.Log.KlantID == User.persoon.PersoonID, includes: "Log,Oefening" ));
             
 

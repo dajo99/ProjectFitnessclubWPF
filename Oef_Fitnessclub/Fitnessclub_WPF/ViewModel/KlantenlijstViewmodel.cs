@@ -82,7 +82,10 @@ namespace Fitnessclub_WPF.ViewModel
 
 
                     unitOfWork.KlantRepo.Aanpassen(GeselecteerdeKlant);
+
+                    //Save-methode gaat alle veranderingen in DbContext doorvoeren naar de database
                     int ok = unitOfWork.Save();
+
                     if (ok > 0)
                     {
                         Klanten = new ObservableCollection<Klant>(unitOfWork.KlantRepo.Ophalen());
@@ -131,7 +134,7 @@ namespace Fitnessclub_WPF.ViewModel
             ControlSwitch.InvokeSwitch(usc, "Functies");
         }
 
-
+        //unitOfWork mag “vernietigd” worden wanneer ViewModel niet meer gebruikt wordt
         public void Dispose()
         {
             unitOfWork?.Dispose();

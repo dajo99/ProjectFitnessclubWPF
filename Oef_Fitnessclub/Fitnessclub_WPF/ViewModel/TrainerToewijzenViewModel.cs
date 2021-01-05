@@ -118,6 +118,8 @@ namespace Fitnessclub_WPF.ViewModel
         {
             List<Log_Oefening> nieuw = new List<Log_Oefening>();
             List<Log_Oefening> lijstKlanten = unitOfWork.Log_OefeningRepo.Ophalen(x => x.Log.Trainer == "Nog te bepalen!", includes: "Log,Oefening").ToList();
+
+            //Hier zat ik met een kleine bug! Als oplossing ga ik bij logoefening de klant opnieuw opvullen.
             foreach (var item in lijstKlanten)
             {
                 int id = item.Log.KlantID;
@@ -215,6 +217,7 @@ namespace Fitnessclub_WPF.ViewModel
         {
             if (GeselecteerdeLog!= null)
             {
+                //Omdat ik in de constructor bij logoefening de klant had opgevult moet ik die eerst terug naar null zetten. 
                 GeselecteerdeLog.Log.klant = null;
 
                 unitOfWork.LogRepo.Verwijderen(GeselecteerdeLog.Log);
